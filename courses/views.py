@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from .models import Course, Tutor
 
 # View Functions
 
@@ -7,5 +8,8 @@ def index(request):
 
 
 def view_courses(request):
-    return render(request, "courses/view_courses.template.html")
+    courses = Course.objects.all()
+    return render(request, "courses/view_courses.template.html", {
+        'courses':courses
+    })
 

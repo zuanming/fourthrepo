@@ -17,6 +17,13 @@
 	<p>
 		These are the courses we have to offer!
 	</p>
+	<ul>
+		{% for course in courses %}
+		<li>{{course.title}}</li>
+		{% endfor %}
+	</ul>
+
+
 </body>
 
 </html>
