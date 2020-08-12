@@ -14,6 +14,13 @@ def view_courses(request):
     })
 
 
+def view_course_details(request, course_id):
+    course = get_object_or_404(Course, pk=course_id)
+    return render(request, "courses/view_course_details.template.html", {
+        "course":course
+    })
+
+
 def view_tutors(request):
     tutors = Tutor.objects.all()
     return render(request, "courses/view_tutors.template.html", {
@@ -23,8 +30,6 @@ def view_tutors(request):
 
 def view_tutor_details(request, tutor_id):
     tutor = get_object_or_404(Tutor, pk=tutor_id)
-    print(tutor)
     return render(request, "courses/view_tutor_details.template.html", {
         'tutor':tutor
     })
-    

@@ -8,7 +8,13 @@
 	</p>
 	<ul>
 		{% for course in courses %}
-		<li>{{course.title}}</li>
+		<li><a href="{% url 'view_course_details' course_id=course.id %}">{{course.title}}</a></li>
 		{% endfor %}
 	</ul>
+{% endblock %}
+
+{% block js %}
+<script>
+	$("#navbar-courses").addClass("active");
+</script>
 {% endblock %}

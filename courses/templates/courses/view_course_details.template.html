@@ -1,0 +1,15 @@
+{% extends 'base.template.html' %}
+{%load static %}
+
+{% block content %}
+	<h1>{{course.title}}</h1>
+	<p>
+        <!--Description of HTML-->
+	</p>
+{% endblock %}
+
+{% block js %}
+<script>
+	$("#navbar-courses").addClass("active");
+</script>
+{% endblock %}
