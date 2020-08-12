@@ -8,3 +8,4 @@ def index(request):
 
 def view_courses(request):
     return render(request, "courses/view_courses.template.html")
+
