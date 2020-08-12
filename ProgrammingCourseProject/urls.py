@@ -19,7 +19,8 @@ import courses.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', courses.views.index ),
-    path('courses/', courses.views.view_courses, name = 'view_courses'),
-    path('tutors/', courses.views.view_tutors, name = 'view_tutors'),
+    path('', courses.views.index),
+    path('courses/', courses.views.view_courses, name='view_courses'),
+    path('tutors/', courses.views.view_tutors, name='view_tutors'),
+    path('tutors/<tutor_id>', courses.views.view_tutor_details, name='view_tutor_details'),
 ]

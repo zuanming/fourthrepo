@@ -13,13 +13,13 @@
 </head>
 
 <body>
-	<h1>Tutors</h1>
+	<h1>{{tutor.first_name}} {{tutor.last_name}}</h1>
 	<p>
-		These are the tutors who will be teaching you coding!
+        Teaches:
 	</p>
 	<ul>
-		{% for tutor in tutors %}
-        <li><a href="{% url 'view_tutor_details' tutor_id=tutor.id %}">{{tutor.first_name}} {{tutor.last_name}}</a></li>
+		{% for course in tutor.courses.all %}
+        <li>{{course}}</li>
 		{% endfor %}
 	</ul>
 
