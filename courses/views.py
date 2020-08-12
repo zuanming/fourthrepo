@@ -13,3 +13,9 @@ def view_courses(request):
         'courses':courses
     })
 
+
+def view_tutors(request):
+    tutors = Tutor.objects.all()
+    return render(request, "courses/view_tutors.template.html", {
+        'tutors':tutors
+    })

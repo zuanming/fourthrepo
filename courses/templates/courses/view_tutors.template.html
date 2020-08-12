@@ -1,0 +1,29 @@
+{%load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Tutors</h1>
+	<p>
+		These are the tutors who will be teaching you coding!
+	</p>
+	<ul>
+		{% for tutor in tutors %}
+        <li>{{tutor.first_name}} {{tutor.last_name}}</li>
+		{% endfor %}
+	</ul>
+
+
+</body>
+
+</html>
