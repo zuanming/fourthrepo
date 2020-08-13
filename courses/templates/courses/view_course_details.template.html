@@ -1,4 +1,5 @@
 {% extends 'base.template.html' %}
+{% load crispy_forms_tags %}
 {%load static %}
 
 {% block content %}
@@ -11,6 +12,10 @@
 	{% endfor %}
 	</ul>
 	<p>{{course.description}}</p>
+
+	<!--Reviews Section-->
+	<h3>Reviews</h3>
+	<a href="{% url 'create_review' course_id=course.id %}" class="btn btn-secondary">New Review</a>
 {% endblock %}
 
 {% block js %}

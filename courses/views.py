@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from .models import Course, Tutor
+from reviews.forms import ReviewForm
 
 # View Functions
 
@@ -16,8 +17,10 @@ def view_courses(request):
 
 def view_course_details(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
+    review_form = ReviewForm()
     return render(request, "courses/view_course_details.template.html", {
-        "course":course
+        'course':course,
+        'form':review_form,
     })
 
 
