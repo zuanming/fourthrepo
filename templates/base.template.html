@@ -9,6 +9,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <!-- Website Icon -->
+    <link rel = "icon" type = "image/png" href = "https://res.cloudinary.com/dhktrng6p/image/upload/v1597329928/Screenshot_2020-08-13_at_10.45.10_PM_g3fq7l.png">
+    <link rel = "apple-touch-icon" type = "image/png" href = "https://res.cloudinary.com/dhktrng6p/image/upload/v1597329928/Screenshot_2020-08-13_at_10.45.10_PM_g3fq7l.png"/>
+
     <title>{%block title%}{%endblock%}</title>
   </head>
   <body>
@@ -27,7 +32,7 @@
             <a class="nav-link" href="{% url 'view_tutors' %}">Tutors</a>
           </li>
           <li id="navbar-forum" class="nav-item">
-            <a class="nav-link" href="">Forum</a>
+            <a class="nav-link" href="{% url 'view_forum' %}">Forum</a>
           </li>
         </ul>
       </div>

@@ -1,0 +1,36 @@
+{% extends 'base.template.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Forum</h1>
+    <p>
+        Ask and answer questions here!
+    </p>
+    <div class = "container">
+        {% for question in questions %}
+        <div class="card mb-2">
+            <div class="card-title">
+                {{question.title}}
+            </div>
+            <div class="card-body">
+                <p>{{question.content}}</p>
+                <p class="blockquote-footer">Posted by {{question.user.username}} at {{question.datetime|date:'d-M-Y H:i'}}</p>
+            </div>
+            {% for answer in question.answer_set.all %}
+            <div class="card-footer text-right">
+                <p>{{answer.content}}</p>
+                <p class="blockquote-footer">Posted by {{answer.user.username}} at {{answer.datetime|date:'d-M-Y H:i'}}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    
+{% endblock %}
+
+{% block js %}
+<script>
+	$("#navbar-forum").addClass("active");
+</script>
+{% endblock %}
