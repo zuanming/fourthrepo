@@ -4,6 +4,7 @@ from reviews.forms import ReviewForm
 
 # View Functions
 
+
 def index(request):
     return HttpResponse("Home")
 
@@ -11,7 +12,7 @@ def index(request):
 def view_courses(request):
     courses = Course.objects.all()
     return render(request, "courses/view_courses.template.html", {
-        'courses':courses
+        'courses': courses
     })
 
 
@@ -19,20 +20,20 @@ def view_course_details(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     review_form = ReviewForm()
     return render(request, "courses/view_course_details.template.html", {
-        'course':course,
-        'form':review_form,
+        'course': course,
+        'form': review_form,
     })
 
 
 def view_tutors(request):
     tutors = Tutor.objects.all()
     return render(request, "courses/view_tutors.template.html", {
-        'tutors':tutors
+        'tutors': tutors
     })
 
 
 def view_tutor_details(request, tutor_id):
     tutor = get_object_or_404(Tutor, pk=tutor_id)
     return render(request, "courses/view_tutor_details.template.html", {
-        'tutor':tutor
+        'tutor': tutor
     })

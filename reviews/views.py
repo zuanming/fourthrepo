@@ -19,9 +19,6 @@ def create_review(request, course_id):
         review.course = get_object_or_404(Course, pk=course_id)
         review.date = datetime.datetime.now()
         review.save()
-        return redirect(reverse('view_reviews'))
+        return redirect('view_course_details', course_id=review.course.id)
     else:
         form = ReviewForm()
-        return render(request, 'reviews/create_review.template.html', {
-            'form':form
-        })

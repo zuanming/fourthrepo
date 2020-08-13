@@ -1,19 +1,16 @@
-{% extends 'base.template.html' %}
-{%load static %}
-
-{% block content %}
-	<h1>Courses</h1>
-	<p>
-		These are the courses we have to offer!
-	</p>
-	<ul>
-		{% for course in courses %}
-		<li><a href="{% url 'view_course_details' course_id=course.id %}">{{course.title}}</a></li>
-		{% endfor %}
-	</ul>
-{% endblock %}
-
-{% block js %}
+{% extends 'base.template.html' %} {%load static %} {% block content %}
+<h1>Courses</h1>
+<p>
+	These are the courses we have to offer!
+</p>
+<ul>
+	{% for course in courses %}
+	<li>
+		<a href="{% url 'view_course_details' course_id=course.id %}">{{course.title}}</a>
+	</li>
+	{% endfor %}
+</ul>
+{% endblock %} {% block js %}
 <script>
 	$("#navbar-courses").addClass("active");
 </script>
