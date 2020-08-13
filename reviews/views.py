@@ -19,22 +19,33 @@ def create_review(request, course_id):
         review.course = get_object_or_404(Course, pk=course_id)
         review.datetime = datetime.datetime.now()
         if review_form.is_valid():
-            review.save()
+            review_form.save()
             return redirect('view_course_details', course_id=review.course.id)
         else:
             return redirect('view_course_details', course_id=review.course.id)
     else:
-        review_form = ReviewForm()
+        review = ReviewForm()
 
 def update_review(request, review_id):
     review_being_updated = get_object_or_404(Review, pk=review_id)
     if request.method == 'POST':
-        review_form = ReviewForm(request.POST, instance=review_being_updated)
-        if review_form.is_valid():
-            review_form.save()
+        update_review_form = ReviewForm(request.POST, instance=review_being_updated)
+        if update_review_form.is_valid():
+            update_review_form.save()
             return redirect('view_course_details', course_id=review_being_updated.course.id)
     else:
         review_form = ReviewForm(instance=review_being_updated)
         return render(request, 'reviews/update_review.template.html', {
-            'form': review_form
+            'update_review_form': update_review_form
+        })
+
+
+def delete_review(request, review_id):
+    review_to_delete = get_object_or_404(Review, pk=review_id)
+    if request.method == 'POST':
+        review_to_delete.delete()
+        return redirect('view_course_details', course_id=review_to_delete.course.id)
+    else:
+        return render(request, 'reviews/delete_review.template.html', {
+            'review': review_to_delete
         })
