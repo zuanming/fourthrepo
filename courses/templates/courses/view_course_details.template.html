@@ -3,16 +3,21 @@
 {%load static %}
 
 {% block content %}
+<div class="text-center">
 	<h1>{{course.title}}</h1>
-	<img src="{{course.logo_url}}" alt="logo image">
+	<img src="{{course.logo_url}}" class="img-fluid" style="max-width: 200px;" alt="logo image">
+</div>
+<div class='text-center'>
+	<p>{{course.description}}</p>
 	<h3>Taught By</h3>
 	<ul>
 	{% for tutor in course.tutors.all %}
 	<li>{{tutor.first_name}} {{tutor.last_name}}</li>
 	{% endfor %}
 	</ul>
-	<p>{{course.description}}</p>
-
+	
+</div>
+	
 	<!--Reviews Section-->
 	<h3>Reviews</h3>
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createReview">
@@ -30,8 +35,10 @@
 			<p class="blockquote-footer">Posted by {{r.user.username}} at {{r.datetime|date:'d-M-Y H:i'}}</p>
 		</div>
 		<div class="text-right">
+			{% if user.get_username == r.user.username  %}
 			<a href="{% url 'update_review' review_id=r.id %}" class="btn btn-primary">Edit</a>
 			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteReview{{r.id}}">Delete</button>
+			{% endif %}
 		</div>
 	</div>
 
