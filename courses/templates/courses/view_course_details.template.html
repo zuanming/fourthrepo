@@ -3,9 +3,14 @@
 
 {% block content %}
 	<h1>{{course.title}}</h1>
-	<p>
-        <!--Description of HTML-->
-	</p>
+	<img src="{{course.logo_url}}" alt="logo image">
+	<h3>Taught By</h3>
+	<ul>
+	{% for tutor in course.tutors.all %}
+	<li>{{tutor.first_name}} {{tutor.last_name}}</li>
+	{% endfor %}
+	</ul>
+	<p>{{course.description}}</p>
 {% endblock %}
 
 {% block js %}

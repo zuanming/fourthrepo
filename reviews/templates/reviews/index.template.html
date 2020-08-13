@@ -1,0 +1,15 @@
+{% extends 'base.template.html' %}
+
+{% block content %}
+    <h1>Reviews</h1>
+    <p>
+        Here you can see all the reviews that we have.
+    </p>
+    <ul>
+    {% for review in reviews %}
+        <li>
+            {{review.title}}
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

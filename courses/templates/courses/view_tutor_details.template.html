@@ -3,6 +3,7 @@
 
 {% block content %}
 	<h1>{{tutor.first_name}} {{tutor.last_name}}</h1>
+	<img src="{{tutor.image_url}}" alt="profile picture">
 	<p>
         Teaches:
 	</p>
@@ -11,6 +12,7 @@
         <li>{{course}}</li>
 		{% endfor %}
 	</ul>
+	<p>{{tutor.summary}}</p>
 {% endblock %}
 
 {% block js %}

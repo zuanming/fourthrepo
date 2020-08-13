@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import courses.views
+import reviews.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', courses.views.index),
-    path('courses/', include('courses.urls'),)
+    path('courses/', include('courses.urls')),
+    path('reviews/', include('reviews.urls')),
 ]
