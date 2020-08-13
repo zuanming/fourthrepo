@@ -34,9 +34,10 @@ def update_review(request, review_id):
             update_review_form.save()
             return redirect('view_course_details', course_id=review_being_updated.course.id)
     else:
-        review_form = ReviewForm(instance=review_being_updated)
+        update_review_form = ReviewForm(instance=review_being_updated)
         return render(request, 'reviews/update_review.template.html', {
-            'update_review_form': update_review_form
+            'form': update_review_form,
+            'course':review_being_updated.course
         })
 
 
