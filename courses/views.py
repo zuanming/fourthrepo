@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from .models import Course, Tutor
 from reviews.forms import ReviewForm
+from django.contrib.auth.decorators import login_required, permission_required
 
 # View Functions
 
