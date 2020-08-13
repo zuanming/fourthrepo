@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Review
-from .forms import ReviewForm
+from .forms import ReviewForm, CommentForm
 from courses.models import Course
 import datetime
 
@@ -49,4 +49,23 @@ def delete_review(request, review_id):
     else:
         return render(request, 'reviews/delete_review.template.html', {
             'review': review_to_delete
+        })
+
+
+def create_comment(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+    if request.method=="POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.review = review
+            comment.datetime = datetime.datetime.now()
+            comment.user = request.user
+            comment.save()
+            return redirect('view_course_details', course_id=review.course.id)
+    else:
+        form = CommentForm()
+        return render(request, 'reviews/create_comment.template.html', {
+            'form': form,
+            'review': review
         })
