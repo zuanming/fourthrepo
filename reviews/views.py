@@ -24,7 +24,8 @@ def create_review(request, course_id):
         else:
             return redirect('view_course_details', course_id=review.course.id)
     else:
-        review = ReviewForm()
+        review_form = ReviewForm()
+        return review_form
 
 def update_review(request, review_id):
     review_being_updated = get_object_or_404(Review, pk=review_id)
