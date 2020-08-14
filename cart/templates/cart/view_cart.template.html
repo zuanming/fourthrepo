@@ -1,0 +1,23 @@
+{% extends 'base.template.html' %}
+{% load static %}
+
+{%block content %}
+{%for key, cart_item in cart.items %}
+<div class="card">
+    <div class="card-title">{{cart_item.title}}</div>
+    <div class="card-body">
+    <p>
+        Quantity:{{cart_item.qty}}<br/>
+        Cost: {{cart_item.cost}}
+    </p>
+    <a class="btn btn-danger btn-sm" href="{% url 'remove_from_cart' course_id=cart_item.id %}">Remove</a>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+
+{% block js %}
+<script>
+	$("#navbar-cart").addClass("active");
+</script>
+{% endblock %}

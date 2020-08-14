@@ -5,6 +5,7 @@ class Course(models.Model):
     title = models.CharField(blank=False, max_length=255)
     logo_url = models.CharField(blank=False, max_length=255)
     description = models.TextField(blank=False)
+    cost = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     tutors = models.ManyToManyField('Tutor')
     def __str__(self):
         return self.title

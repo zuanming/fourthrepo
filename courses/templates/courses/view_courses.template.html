@@ -1,7 +1,7 @@
 {% extends 'base.template.html' %}
 {% load static %}
-{% block content %}
 
+{% block content %}
 <h1>Courses</h1>
 <p>
 	These are the courses we have to offer!
@@ -10,10 +10,13 @@
 	{% for course in courses %}
 	<li>
 		<a href="{% url 'view_course_details' course_id=course.id %}">{{course.title}}</a>
+		<a href="{% url 'add_to_cart' course_id=course.id %}" class = "btn btn-info">Add to Cart</a>
 	</li>
 	{% endfor %}
 </ul>
-{% endblock %} {% block js %}
+{% endblock %}
+
+{% block js %}
 <script>
 	$("#navbar-courses").addClass("active");
 </script>

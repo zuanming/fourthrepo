@@ -34,6 +34,9 @@
           <li id="navbar-forum" class="nav-item">
             <a class="nav-link" href="{% url 'view_forum' %}">Forum</a>
           </li>
+          <li id="navbar-cart" class="nav-item">
+            <a class="nav-link" href="{% url 'view_cart' %}">Cart</a>
+          </li>
         </ul>
       </div>
       {% if request.user.is_authenticated  %}
