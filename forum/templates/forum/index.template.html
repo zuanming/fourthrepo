@@ -12,12 +12,17 @@
         {% for question in questions %}
         <div class="card mb-2">
             <div class="card-title">
-                {{question.title}}
+                {{question.title}} <i>({{question.course}})</i>
             </div>
             <div class="card-body">
                 <p>{{question.content}}</p>
                 <p class="blockquote-footer">Posted by {{question.user.username}} at {{question.datetime|date:'d-M-Y H:i'}}</p>
             </div>
+            {% if user.get_username == question.user.username %}
+            <div class="text-right">
+                <a href="{% url 'update_question' question_id=question.id %}" class="btn btn-primary">Edit</a>
+            </div>
+            {% endif %}
             {% for answer in question.answer_set.all %}
             <div class="card-footer text-right">
                 <p>{{answer.content}}</p>

@@ -30,3 +30,18 @@ def create_question(request):
             'question_form':question_form
         })
 
+def update_question(request, question_id):
+    question_being_updated = get_object_or_404(Question, pk=question_id)
+    if request.method=="POST":
+        update_question_form = QuestionForm(request.POST)
+        if update_question_form.is_valid():
+            question.user = request.user
+            question.datetime = datetime.datetime.now()
+            question_form.save()
+            messages.success(request, f"New question posted!")
+            return redirect('view_forum')
+    else:
+        update_question_form = QuestionForm()
+        return render(request, "forum/update_question.template.html", {
+            'update_question_form':update_question_form
+        })
