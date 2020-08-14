@@ -38,13 +38,15 @@
 			{% if user.get_username == r.user.username  %}
 			<a href="{% url 'update_review' review_id=r.id %}" class="btn btn-primary">Edit</a>
 			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteReview{{r.id}}">Delete</button>
+			{% else %}
+			<a href="{% url 'create_comment' review_id=r.id %}" class="btn btn-secondary">Comment</a>
 			{% endif %}
 		</div>
 		{% for comment in r.comment_set.all %}
 		<div class = "card">
 			<div class = "card-footer text-right">
 				{{comment.text}}
-				<p class="blockquote-footer">Posted by {{r.user.username}} at {{r.datetime|date:'d-M-Y H:i'}}</p>
+				<p class="blockquote-footer">Posted by {{comment.user.username}} at {{comment.datetime|date:'d-M-Y H:i'}}</p>
 			</div>
 		</div>
 		{% endfor %}
