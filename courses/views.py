@@ -3,6 +3,7 @@ from .models import Course, Tutor
 from reviews.forms import ReviewForm
 from django.contrib.auth.decorators import login_required, permission_required
 
+
 # View Functions
 
 

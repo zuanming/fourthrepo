@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Question, Answer
 from .forms import QuestionForm, AnswerForm
 from courses.models import Course
 from django.contrib.auth.decorators import login_required, permission_required
 import datetime
+from django.contrib import messages
+
 
 def index(request):
     questions = Question.objects.all()
@@ -17,10 +19,10 @@ def create_question(request):
         question_form = QuestionForm(request.POST)
         question = question_form.save(commit=False)
         question.user = request.user
-        question.course = get_object_or_404(Course, pk=course_id)
-        question.datetime = datetime.dateime.now()
+        question.datetime = datetime.datetime.now()
         if question_form.is_valid():
             question_form.save()
+            messages.success(request, f"New question posted!")
             return redirect('view_forum')
     else:
         question_form = QuestionForm()

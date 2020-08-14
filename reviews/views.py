@@ -3,6 +3,8 @@ from .models import Review
 from .forms import ReviewForm, CommentForm
 from courses.models import Course
 import datetime
+from django.contrib import messages
+
 
 def index(request):
     reviews= Review.objects.all()
@@ -20,6 +22,7 @@ def create_review(request, course_id):
         review.datetime = datetime.datetime.now()
         if review_form.is_valid():
             review_form.save()
+            messages.success(request, f"New review posted!")
             return redirect('view_course_details', course_id=review.course.id)
         else:
             return redirect('view_course_details', course_id=review.course.id)
@@ -33,6 +36,7 @@ def update_review(request, review_id):
         update_review_form = ReviewForm(request.POST, instance=review_being_updated)
         if update_review_form.is_valid():
             update_review_form.save()
+            messages.success(request, f"Review updated!")
             return redirect('view_course_details', course_id=review_being_updated.course.id)
     else:
         update_review_form = ReviewForm(instance=review_being_updated)
@@ -46,6 +50,7 @@ def delete_review(request, review_id):
     review_to_delete = get_object_or_404(Review, pk=review_id)
     if request.method == 'POST':
         review_to_delete.delete()
+        messages.success(request, f"Review removed!")
         return redirect('view_course_details', course_id=review_to_delete.course.id)
     else:
         return render(request, 'reviews/delete_review.template.html', {
@@ -63,6 +68,7 @@ def create_comment(request, review_id):
             comment.datetime = datetime.datetime.now()
             comment.user = request.user
             comment.save()
+            messages.success(request, f"New comment posted!")
             return redirect('view_course_details', course_id=review.course.id)
     else:
         form = CommentForm()
