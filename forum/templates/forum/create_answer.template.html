@@ -1,0 +1,16 @@
+{% extends 'base.template.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2>Post your answer!</h2>
+<blockquote class="blockquote">
+    <h5>{{question.title}}</h5>
+    <p>{{question.content}}</p>
+</blockquote>
+<form method='POST'>
+    {% csrf_token %}
+    {{ answer_form|crispy }}
+    <input type = 'submit' class = "btn btn-info" value = 'Answer!'/>
+</form>
+{% endblock%}
