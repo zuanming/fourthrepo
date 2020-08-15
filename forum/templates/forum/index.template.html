@@ -7,6 +7,12 @@
     <p>
         Ask and answer questions here!
     </p>
+
+    <form method="GET">
+        {{search_form|crispy}}
+        <input type="submit" value="Search"/>
+    </form>
+
     <a href="{% url 'create_question' %}" class = "btn btn-primary">New Question</a>
     <div class = "container">
         {% for question in questions %}

@@ -1,16 +1,34 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Question, Answer
-from .forms import QuestionForm, AnswerForm
+from .forms import QuestionForm, AnswerForm, SearchForm
 from courses.models import Course
 from django.contrib.auth.decorators import login_required, permission_required
 import datetime
 from django.contrib import messages
+from django.db.models import Q
 
 
 def index(request):
     questions = Question.objects.all()
+    courses = Course.objects.all()
+    if request.GET:
+        queries = ~Q(pk__in=[])
+
+        if 'title' in request.GET and request.GET['title']:
+            title = request.GET['title']
+            queries = queries & Q(title__icontains=title)
+
+        if 'course' in request.GET and request.GET['course']:
+            course = request.GET['course']
+            queries = queries & Q(course__in=course)
+
+        questions = questions.filter(queries)
+        
+    search_form = SearchForm(request.GET)
     return render(request, 'forum/index.template.html', {
-        'questions':questions
+        'courses': courses,
+        'questions': questions,
+        'search_form': search_form
     })
 
 
