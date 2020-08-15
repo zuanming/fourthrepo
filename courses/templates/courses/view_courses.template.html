@@ -2,18 +2,29 @@
 {% load static %}
 
 {% block content %}
-<h1>Courses</h1>
-<p>
-	These are the courses we have to offer!
-</p>
-<ul>
+<div class="text-center">
+	<h1>Courses</h1>
+	<p>
+		These are the courses we have to offer!
+	</p>
+</div>
+
+<div class="row">
 	{% for course in courses %}
-	<li>
-		<a href="{% url 'view_course_details' course_id=course.id %}">{{course.title}}</a>
-		<a href="{% url 'add_to_cart' course_id=course.id %}" class = "btn btn-info">Add to Cart</a>
-	</li>
+	<div class="card index-card col-md-4">
+		<img class="card-img-top" src="{{course.logo_url}}" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title">{{course.title}}</h5>
+			<a href="{% url 'view_course_details' course_id=course.id %}" class="btn btn-warning">View More</a>
+		</div>
+		<div class="card-footer">
+			<a href="{% url 'add_to_cart' course_id=course.id %}" class = "btn btn-info">Add to Cart</a>
+		</div>
+	</div>
 	{% endfor %}
-</ul>
+</div>
+
+
 {% endblock %}
 
 {% block js %}
