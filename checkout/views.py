@@ -1,10 +1,13 @@
-from django.shortcuts import render, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import render, reverse, redirect, HttpResponse, get_object_or_404
 from django.conf import settings
 import stripe
+from .models import Purchase
 from courses.models import Course
 from django.contrib.sites.models import Site
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
+
+endpoint_secret = "whsec_AiOZdnoNnmQLTuKwm3RpZZeyfterfBsW"
 
 def checkout(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -26,7 +29,7 @@ def checkout(request):
         }
 
         line_items.append(item)
-        all_course_ids.append(str(book_model.id))
+        all_course_ids.append(str(course_model.id))
 
     current_site = Site.objects.get_current()
     domain = current_site.domain
@@ -42,6 +45,10 @@ def checkout(request):
         success_url=domain + reverse("checkout_success"),
         cancel_url=domain + reverse("checkout_cancelled")
     )
+    return render(request, "checkout/checkout.template.html", {
+        "session_id": session.id,
+        "public_key": settings.STRIPE_PUBLISHABLE_KEY
+    })
 
 
 def checkout_cancelled(request):
@@ -50,9 +57,9 @@ def checkout_cancelled(request):
 
 
 def checkout_success(request):
-    messages.success(request, f"Payment Completed!")
-    return redirect('view_courses')
-
+    request.session['shopping_cart'] = {}
+    messages.success(request, f"Payment Success!")
+    return redirect("view_courses")
 
 @csrf_exempt
 def payment_completed(request):
@@ -75,3 +82,17 @@ def payment_completed(request):
     handle_payment(session)
 
   return HttpResponse(status=200)
+
+
+def handle_payment(session):
+    user = get_object_or_404(User, pk=session["client_reference_id"])
+
+    all_course_ids = session["metadata"]["all_course_ids"].split(",")
+
+    for course_id in all_course_ids:
+        course_model = get_object_or_404(Course, pk=course_id)
+
+        purchase = Purchase()
+        purchase.course_id = course_model
+        purchase.user_id = user
+        purchase.save()
