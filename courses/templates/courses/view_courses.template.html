@@ -9,22 +9,61 @@
 	</p>
 </div>
 
-<div class="row">
-	{% for course in courses %}
-	<div class="card index-card col-md-4">
-		<img class="card-img-top" src="{{course.logo_url}}" alt="Card image cap">
-		<div class="card-body">
-			<h5 class="card-title">{{course.title}}</h5>
-			<a href="{% url 'view_course_details' course_id=course.id %}" class="btn btn-warning">View More</a>
-		</div>
-		<div class="card-footer">
-			<a href="{% url 'add_to_cart' course_id=course.id %}" class = "btn btn-info">Add to Cart</a>
-		</div>
-	</div>
-	{% endfor %}
+<div class="text-center">
+    <h2>Front End</h2>
+    <div class="row justify-content-center">
+        {% for course in courses %}
+            {% if course.dev_type == "frontend" %}
+            <div class="card index-card col-md-4">
+                <img class="card-img-top" src="{{course.logo_url}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{course.title}}</h5>
+                    <a href="{% url 'view_course_details' course_id=course.id %}" class="btn btn-warning">View More</a>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'add_to_cart' course_id=course.id %}" class = "btn btn-info">Add to Cart</a>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <h2>Back End</h2>
+    <div class="row justify-content-center">
+        {% for course in courses %}
+            {% if course.dev_type == "backend" %}
+            <div class="card index-card col-md-4">
+                <img class="card-img-top" src="{{course.logo_url}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{course.title}}</h5>
+                    <a href="{% url 'view_course_details' course_id=course.id %}" class="btn btn-warning">View More</a>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'add_to_cart' course_id=course.id %}" class = "btn btn-info">Add to Cart</a>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <h2>Databases</h2>
+    <div class="row justify-content-center">
+        {% for course in courses %}
+            {% if course.dev_type == "database" %}
+            <div class="card index-card col-md-4">
+                <img class="card-img-top" src="{{course.logo_url}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{course.title}}</h5>
+                    <a href="{% url 'view_course_details' course_id=course.id %}" class="btn btn-warning">View More</a>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'add_to_cart' course_id=course.id %}" class = "btn btn-info">Add to Cart</a>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
 </div>
-
-
 {% endblock %}
 
 {% block js %}

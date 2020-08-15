@@ -1,12 +1,12 @@
 from django.db import models
 
-# Create your models here.
 class Course(models.Model):
     title = models.CharField(blank=False, max_length=255)
     logo_url = models.CharField(blank=False, max_length=255)
     description = models.TextField(blank=False)
     cost = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     tutors = models.ManyToManyField('Tutor')
+    dev_type = models.CharField(max_length=100, blank=False)
     def __str__(self):
         return self.title
 

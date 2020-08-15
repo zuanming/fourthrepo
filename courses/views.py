@@ -4,9 +4,6 @@ from reviews.forms import ReviewForm
 from django.contrib.auth.decorators import login_required, permission_required
 
 
-# View Functions
-
-
 def index(request):
     return HttpResponse("Home")
 
