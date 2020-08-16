@@ -11,7 +11,9 @@
 	<div class="row justify-content-center">
 		{% for course in tutor.courses.all %}
 		<div class="card index-card">
-			<img class="card-img-top avatar mx-auto" style="max-width:100px" src="{{course.logo_url}}" alt="Course Logo">
+			<div class="card-body card-img-div">
+				<img class="card-img-top img-fluid course-logo align-self-center" src="{{course.logo_url}}" alt="Card image cap">
+			</div>
 			<div class="card-body">
 				{{course.title}}
 			</div>

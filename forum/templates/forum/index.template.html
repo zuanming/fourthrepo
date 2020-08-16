@@ -27,12 +27,14 @@
             <p class="blockquote-footer">Posted by {{question.user.username}} at {{question.datetime|date:'d-M-Y H:i'}}</p>
         </div>
         <div class="text-right">
+        {% if request.user.is_authenticated %}
             {% if user.get_username == question.user.username %}
             <a href="{% url 'update_question' question_id=question.id %}" class="btn btn-primary">Edit</a>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteQuestion{{question.id}}">Delete</button>
             {% else %}
             <a href="{% url 'create_answer' question_id=question.id %}" class="btn btn-secondary">Answer</a>
             {% endif %}
+        {% endif %}
         </div>
         
         {% for answer in question.answer_set.all %}
@@ -41,11 +43,13 @@
                 <p>{{answer.content}}</p>
                 <p class="blockquote-footer">Posted by {{answer.user.username}} at {{answer.datetime|date:'d-M-Y H:i'}}</p>
             </div>
-            {% if user.get_username == answer.user.username %}
+            {% if request.user.is_authenticated %}
+                {% if user.get_username == answer.user.username %}
             <div>
                 <a href="{% url 'update_answer' answer_id=answer.id %}" class="btn btn-primary">Edit</a>
                 <a href="{% url 'delete_answer' answer_id=answer.id %}" class="btn btn-danger">Delete</a>
             </div>
+                {% endif %}
             {% endif %}
         </div>
         {% endfor %}
