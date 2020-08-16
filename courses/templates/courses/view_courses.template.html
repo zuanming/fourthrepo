@@ -15,12 +15,14 @@
         {% for course in courses %}
             {% if course.dev_type == "frontend" %}
             <div class="card index-card col-md-4">
-                <img class="card-img-top" src="{{course.logo_url}}" alt="Card image cap">
+                <div class="card-body card-img-div">
+                    <img class="card-img-top img-fluid course-logo align-self-center" src="{{course.logo_url}}" alt="Card image cap">
+                </div>
                 <div class="card-body">
                     <h5 class="card-title">{{course.title}}</h5>
-                    <a href="{% url 'view_course_details' course_id=course.id %}" class="btn btn-warning">View More</a>
                 </div>
                 <div class="card-footer">
+                    <a href="{% url 'view_course_details' course_id=course.id %}" class="btn btn-warning">View More</a>
                     <a href="{% url 'add_to_cart' course_id=course.id %}" class = "btn btn-info">Add to Cart</a>
                 </div>
             </div>
@@ -33,7 +35,9 @@
         {% for course in courses %}
             {% if course.dev_type == "backend" %}
             <div class="card index-card col-md-4">
-                <img class="card-img-top" src="{{course.logo_url}}" alt="Card image cap">
+                <div class="card-body card-img-div">
+                    <img class="card-img-top img-fluid course-logo" src="{{course.logo_url}}" alt="Card image cap">
+                </div>
                 <div class="card-body">
                     <h5 class="card-title">{{course.title}}</h5>
                     <a href="{% url 'view_course_details' course_id=course.id %}" class="btn btn-warning">View More</a>
@@ -51,7 +55,9 @@
         {% for course in courses %}
             {% if course.dev_type == "database" %}
             <div class="card index-card col-md-4">
-                <img class="card-img-top" src="{{course.logo_url}}" alt="Card image cap">
+                <div class="card-body card-img-div">
+                    <img class="card-img-top img-fluid course-logo" src="{{course.logo_url}}" alt="Card image cap">
+                </div>
                 <div class="card-body">
                     <h5 class="card-title">{{course.title}}</h5>
                     <a href="{% url 'view_course_details' course_id=course.id %}" class="btn btn-warning">View More</a>

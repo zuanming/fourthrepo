@@ -16,6 +16,7 @@ def index(request):
 
         if 'title' in request.GET and request.GET['title']:
             title = request.GET['title']
+            print(title)
             queries = queries & Q(title__icontains=title)
 
         if 'course' in request.GET and request.GET['course']:

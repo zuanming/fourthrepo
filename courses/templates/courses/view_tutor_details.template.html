@@ -2,17 +2,25 @@
 {%load static %}
 
 {% block content %}
+<div class="text-center justify-content-center">
+	<img class="avatar mx-auto" src="{{tutor.image_url}}" alt="profile picture">
 	<h1>{{tutor.first_name}} {{tutor.last_name}}</h1>
-	<img src="{{tutor.image_url}}" alt="profile picture">
 	<p>
         Teaches:
 	</p>
-	<ul>
+	<div class="row justify-content-center">
 		{% for course in tutor.courses.all %}
-        <li>{{course}}</li>
+		<div class="card index-card">
+			<img class="card-img-top avatar mx-auto" style="max-width:100px" src="{{course.logo_url}}" alt="Course Logo">
+			<div class="card-body">
+				{{course.title}}
+			</div>
+		</div>
 		{% endfor %}
-	</ul>
+	</div>	
 	<p>{{tutor.summary}}</p>
+</div>
+	
 {% endblock %}
 
 {% block js %}

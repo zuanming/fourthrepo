@@ -4,4 +4,18 @@
 
 .avatar {
     border-radius: 50rem;
+    max-width:400px;
+}
+
+.course-logo {
+    max-width:100% !important;
+    max-height:100% !important;
+    height:auto;
+    width:auto;
+    margin:auto;
+}
+
+.card-img-div {
+    height:200px;
+    display:flex;
 }

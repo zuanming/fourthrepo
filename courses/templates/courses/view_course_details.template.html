@@ -10,12 +10,16 @@
 <div class='text-center'>
 	<p>{{course.description}}</p>
 	<h3>Taught By</h3>
-	<ul>
-	{% for tutor in course.tutors.all %}
-	<li>{{tutor.first_name}} {{tutor.last_name}}</li>
-	{% endfor %}
-	</ul>
-	
+	<div class="row justify-content-center">
+		{% for tutor in course.tutors.all %}
+		<div class="card index-card">
+			<img class="card-img-top avatar mx-auto" style="max-width:100px" src="{{tutor.image_url}}" alt="Tutor Avatar">
+			<div class="card-body">
+				{{tutor.first_name}} {{tutor.last_name}}
+			</div>
+		</div>
+		{% endfor %}
+	</div>	
 </div>
 	
 	<!--Reviews Section-->
