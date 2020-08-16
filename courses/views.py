@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404
-from .models import Course, Tutor
+from .models import Course, Tutor, Devtype
 from reviews.forms import ReviewForm
 from django.contrib.auth.decorators import login_required, permission_required
 
@@ -10,8 +10,10 @@ def index(request):
 
 def view_courses(request):
     courses = Course.objects.all()
+    devtypes = Devtype.objects.all()
     return render(request, "courses/view_courses.template.html", {
-        'courses': courses
+        'courses': courses,
+        'devtypes': devtypes,
     })
 
 

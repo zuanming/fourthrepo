@@ -6,7 +6,7 @@ class Course(models.Model):
     description = models.TextField(blank=False)
     cost = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     tutors = models.ManyToManyField('Tutor')
-    dev_type = models.CharField(max_length=100, blank=False)
+    devtype = models.ForeignKey('Devtype', on_delete=models.CASCADE)
     def __str__(self):
         return self.title
 
@@ -20,3 +20,7 @@ class Tutor(models.Model):
     def __str__(self):
         return self.first_name + " " + self.last_name
 
+class Devtype(models.Model):
+    title = models.CharField(blank=False, max_length=50)
+    def __str__(self):
+        return self.title
