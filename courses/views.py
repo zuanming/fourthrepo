@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 
 def index(request):
-    return HttpResponse("Home")
+    return render(request, 'courses/index.template.html')
 
 
 def view_courses(request):
