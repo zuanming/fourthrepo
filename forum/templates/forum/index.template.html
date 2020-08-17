@@ -21,18 +21,16 @@
 
 <div class = "container">
     {% for question in questions %}
-    <div class="card mb-2">
-        <div class="card-title">
-            {{question.title}} <i>({{question.course}})</i>
-        </div>
+    <div class="card mb-2 mainpost">
         <div class="card-body">
-            <p>{{question.content}}</p>
-            <p class="blockquote-footer">Posted by {{question.user.username}} at {{question.datetime|date:'d-M-Y H:i'}}</p>
+            <h4 class="card-title mb-3">{{question.title}} <i>({{question.course}})</i></h4>
+            <p class="card-title ml-3">{{question.content}}</p>
+            <p class="blockquote-footer card-text ml-3">Posted by {{question.user.username}} at {{question.datetime|date:'d-M-Y H:i'}}</p>
         </div>
-        <div class="text-right">
+        <div class="text-right card-body">
         {% if request.user.is_authenticated %}
             {% if user.get_username == question.user.username %}
-            <a href="{% url 'update_question' question_id=question.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'update_question' question_id=question.id %}" class="btn btn-primary card-link">Edit</a>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteQuestion{{question.id}}">Delete</button>
             {% else %}
             <a href="{% url 'create_answer' question_id=question.id %}" class="btn btn-secondary">Answer</a>
@@ -41,10 +39,10 @@
         </div>
         
         {% for answer in question.answer_set.all %}
-        <div class="card-footer text-right">
+        <div class="card-footer subpost text-right">
             <div>
-                <p>{{answer.content}}</p>
-                <p class="blockquote-footer">Posted by {{answer.user.username}} at {{answer.datetime|date:'d-M-Y H:i'}}</p>
+                <p class="card-text mr-3">{{answer.content}}</p>
+                <p class="blockquote-footer mr-3">Posted by {{answer.user.username}} at {{answer.datetime|date:'d-M-Y H:i'}}</p>
             </div>
             {% if request.user.is_authenticated %}
                 {% if user.get_username == answer.user.username %}

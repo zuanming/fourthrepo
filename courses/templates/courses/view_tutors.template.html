@@ -4,18 +4,20 @@
 {% block content %}
 <div class="text-center">
 	<h1>Tutors</h1>
-	<p>
-		These are the tutors who will be teaching you coding!
-	</p>
+	<p>These are the tutors who will be teaching you coding!</p>
 </div>	
 
-<div class="row text-center">
+<div class="row text-center justify-content-center">
 	{% for tutor in tutors %}
-	<div class="card index-card col-md-4">
-		<img class="card-img-top avatar" src="{{tutor.image_url}}" alt="Card image cap">
+	<div class="card big-card col-md-4">
+		<a href="{% url 'view_tutor_details' tutor_id=tutor.id %}" class="card-body" style="height:100%">
+			<img class="img-fluid avatar" src="{{tutor.image_url}}" alt="tutor avatar img">
+		</a>
 		<div class="card-body">
 			<h5 class="card-title">{{tutor.first_name}} {{tutor.last_name}}</h5>
-			<a href="{% url 'view_tutor_details' tutor_id=tutor.id %}" class="btn btn-warning">View More</a>
+		</div>
+		<div class="card-body">
+			<a href="{% url 'view_tutor_details' tutor_id=tutor.id %}" class="btn btn-warning">View profile</a>
 		</div>
 	</div>
 	{% endfor %}

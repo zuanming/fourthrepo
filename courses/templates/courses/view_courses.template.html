@@ -4,25 +4,23 @@
 {% block content %}
 <div class="text-center">
 	<h1>Courses</h1>
-	<p>
-		These are the courses we have to offer!
-	</p>
+	<p>These are the courses we have to offer!</p>
 </div>
 
 <div class="text-center">
     {% for devtype in devtypes %}
     <h2>{{devtype.title}}</h2>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-3">
         {% for course in courses %}
             {% if course.devtype.title == devtype.title %}
-            <div class="card index-card col-md-4">
-                <div class="card-body card-img-div">
-                    <img class="card-img-top img-fluid course-logo align-self-center" src="{{course.logo_url}}" alt="Card image cap">
-                </div>
+            <div class="card big-card col-md-4">
+                <a href="{%url 'view_course_details' course_id=course.id %}" class="card-body" style="height:100%">
+                    <img class="img-fluid course-logo" src="{{course.logo_url}}" alt="course logo img">
+                </a> 
                 <div class="card-body">
                     <h5 class="card-title">{{course.title}}</h5>
                 </div>
-                <div class="card-footer">
+                <div class="card-body">
                     <a href="{% url 'view_course_details' course_id=course.id %}" class="btn btn-warning">View More</a>
                     <a href="{% url 'add_to_cart' course_id=course.id %}" class = "btn btn-info">Add to Cart</a>
                 </div>
