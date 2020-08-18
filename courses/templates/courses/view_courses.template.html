@@ -22,7 +22,13 @@
                 </div>
                 <div class="card-body">
                     <a href="{% url 'view_course_details' course_id=course.id %}" class="btn btn-warning">View More</a>
+                    {% if course in purchased_courses %}
+                    <button class="btn btn-light" disabled>Purchased</button>
+                    {% elif course.title in cart_items %}
+                    <button class="btn btn-dark" disabled>In Cart</button>
+                    {% else %}
                     <a href="{% url 'add_to_cart' course_id=course.id %}" class = "btn btn-info">Add to Cart</a>
+                    {% endif %}
                 </div>
             </div>
             {% endif %}

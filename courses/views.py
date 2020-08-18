@@ -9,11 +9,16 @@ def index(request):
 
 
 def view_courses(request):
+    cart = request.session.get('shopping_cart', {})
+    cart_items = [cart[course_id]['title'] for course_id in cart]
     courses = Course.objects.all()
     devtypes = Devtype.objects.all()
+    purchased_courses =  [purchase.course for purchase in request.user.purchase_set.all()]
     return render(request, "courses/view_courses.template.html", {
         'courses': courses,
         'devtypes': devtypes,
+        'purchased_courses': purchased_courses,
+        'cart_items':cart_items,
     })
 
 

@@ -78,6 +78,6 @@ def handle_payment(session):
     for course_id in all_course_ids:
         course_model = get_object_or_404(Course, pk=course_id)
         purchase = Purchase()
-        purchase.course_id = course_model
-        purchase.user_id = user
+        purchase.course_id = course_model.id
+        purchase.user_id = user.id
         purchase.save()

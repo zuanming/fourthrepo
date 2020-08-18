@@ -14,11 +14,13 @@ def add_to_cart(request, course_id):
             'cost': float(course.cost),
             'qty': 1,
         }
+        request.session['shopping_cart'] = cart
+        messages.success(request, f"'{cart[course_id]['title']}' added to cart!")
+        return redirect(reverse('view_courses'))
     else:
-        cart[course_id]['qty'] += 1
-    request.session['shopping_cart'] = cart
-    messages.success(request, f"'{cart[course_id]['title']}' added to cart!")
-    return redirect(reverse('view_courses'))
+        messages.error(request, f"'{cart[course_id]['title']}' is already in the cart!'")
+        return redirect(reverse('view_courses'))
+    
 
 
 def view_cart(request):
@@ -37,12 +39,3 @@ def remove_from_cart(request, course_id):
         request.session['shopping_cart'] = cart
         messages.success(request, f"'{item_name}' course removed from cart!")
     return redirect(reverse('view_cart'))
-
-
-# def update_quantity(request, course_id):
-#     cart = request.session.get('shopping_cart')
-#     if course_id in cart:
-#         cart[course_id]['qty']= request.POST['qty']
-#         request.session['shopping_cart'] = cart
-#     messages.success(request, f"Cart quantity of '{cart[course_id]['title']}' updated!")
-#     return redirect(reverse('view_cart'))
