@@ -7,20 +7,15 @@
     <div class="card-title">{{cart_item.title}}</div>
     <div class="card-body">
     <p>
-        <form method="POST" action="{% url 'update_quantity' course_id=cart_item.id %}">
-            {%csrf_token%}
-            Quantity:<input name="qty" type="text" value="{{cart_item.qty}}" style="width:20px">
-            <input type="submit" class="btn btn-primary btn-sm" value="Update Quantity"/>
-            </form>
-            Cost: {{cart_item.cost}}
+        Cost: {{cart_item.cost}}
     </p>
     <a class="btn btn-danger btn-sm" href="{% url 'remove_from_cart' course_id=cart_item.id %}">Remove</a>
     </div>
 </div>
+{%endfor%}
 <div>
     <a href="{% url 'checkout' %}" class="btn btn-success">Checkout</a>
 </div>
-{%endfor%}
 {%endblock%}
 
 {% block js %}

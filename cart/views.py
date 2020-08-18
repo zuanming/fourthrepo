@@ -39,10 +39,10 @@ def remove_from_cart(request, course_id):
     return redirect(reverse('view_cart'))
 
 
-def update_quantity(request, course_id):
-    cart = request.session.get('shopping_cart')
-    if course_id in cart:
-        cart[course_id]['qty']= request.POST['qty']
-        request.session['shopping_cart'] = cart
-    messages.success(request, f"Cart quantity of '{cart[course_id]['title']}' updated!")
-    return redirect(reverse('view_cart'))
+# def update_quantity(request, course_id):
+#     cart = request.session.get('shopping_cart')
+#     if course_id in cart:
+#         cart[course_id]['qty']= request.POST['qty']
+#         request.session['shopping_cart'] = cart
+#     messages.success(request, f"Cart quantity of '{cart[course_id]['title']}' updated!")
+#     return redirect(reverse('view_cart'))
