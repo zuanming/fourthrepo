@@ -13,7 +13,10 @@ def view_courses(request):
     cart_items = [cart[course_id]['title'] for course_id in cart]
     courses = Course.objects.all()
     devtypes = Devtype.objects.all()
-    purchased_courses =  [purchase.course for purchase in request.user.purchase_set.all()]
+    if request.user.is_authenticated:
+        purchased_courses =  [purchase.course for purchase in request.user.purchase_set.all()]
+    else:
+        purchased_courses = []
     return render(request, "courses/view_courses.template.html", {
         'courses': courses,
         'devtypes': devtypes,
