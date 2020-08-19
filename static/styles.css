@@ -37,3 +37,7 @@
 .subpost {
     color:darkgrey;
 }
+
+.asteriskField {
+    display: none;
+}

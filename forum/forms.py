@@ -18,3 +18,7 @@ class AnswerForm(forms.ModelForm):
 class SearchForm(forms.Form):
     title = forms.CharField(max_length=100, required=False)
     course = forms.ModelChoiceField(queryset=Course.objects.all(), required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(SearchForm, self).__init__(*args, **kwargs)
+        self.fields['course'].empty_label = "All Courses"

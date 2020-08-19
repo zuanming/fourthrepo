@@ -9,21 +9,32 @@
         Ask and answer questions here!
     </p>
 </div>
-   
-<form method="GET">
-    {{search_form|crispy}}
-    <input type="submit" value="Search"/>
-</form>
+
+<div class="container text-center">
+    <form method="GET">
+        <div class="form-row">
+            <div class="form-group col-md-8 mb-0">
+              {{ search_form.title|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-4 mb-0">
+              {{ search_form.course|as_crispy_field }}
+            </div>
+          </div>
+        <input type="submit" class="btn btn-outline-secondary" value="Search"/>
+    </form>
+</div>
 
 {% if request.user.is_authenticated %}
-<a href="{% url 'create_question' %}" class = "btn btn-primary">New Question</a>
+<div class="container p-3">
+    <a href="{% url 'create_question' %}" class = "btn btn-primary">New Question</a>
+</div>
 {% endif %}
 
 <div class = "container">
     {% for question in questions %}
     <div class="card mb-2 mainpost">
         <div class="card-body">
-            <h4 class="card-title mb-3">{{question.title}} <i>({{question.course}})</i></h4>
+            <h4 class="card-title mb-3">{{question.title}} <span class="text-muted font-weight-light font-italic" > - {{question.course}}</span></h4>
             <p class="card-title ml-3">{{question.content}}</p>
             <p class="blockquote-footer card-text ml-3">Posted by {{question.user.username}} at {{question.datetime|date:'d-M-Y H:i'}}</p>
         </div>
