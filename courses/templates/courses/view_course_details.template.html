@@ -3,11 +3,11 @@
 {%load static %}
 
 {% block content %}
-<div class="text-center">
+<div class="container text-center mt-2">
 	<img src="{{course.logo_url}}" class="img-fluid big-card" alt="logo image">
 	<h1>{{course.title}}</h1>
 </div>
-<div class='text-center'>
+<div class="container text-center">
 	{% if "Administrators" in groups %}
 	<div>
 		<a href="{% url 'update_course' course_id=course.id %}" class = "btn btn-info">Update</a>
@@ -32,15 +32,16 @@
 	</div>
 </div>
 	
-	<!--Reviews Section-->
-	<h3>Reviews</h3>
+<!--Reviews Section-->
+<h3>Reviews</h3>
 
-	{% if request.user.is_authenticated %}
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createReview">
-		New Review
-	</button>
-	{% endif %}
+{% if request.user.is_authenticated %}
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createReview">
+	New Review
+</button>
+{% endif %}
 
+<div class="main-div">
 	{% for r in course.review_set.all %}
 	<div class="card review-id" data-review-id = "{{r.id}}">
 		<div class = "card-body">
@@ -51,16 +52,17 @@
 				{{r.content}}
 			</div>
 			<p class="blockquote-footer ml-3">Posted by {{r.user.username}} at {{r.datetime|date:'d-M-Y H:i'}}</p>
-		</div>
-		<div class="card-body text-right">
-		{%if request.user.is_authenticated %}
-			{% if user.get_username == r.user.username  %}
-			<a href="{% url 'update_review' review_id=r.id %}" class="btn btn-primary">Edit</a>
-			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteReview{{r.id}}">Delete</button>
-			{% else %}
-			<a href="{% url 'create_comment' review_id=r.id %}" class="btn btn-secondary">Comment</a>
+
+			<div class="text-right">
+			{%if request.user.is_authenticated %}
+				{% if user.get_username == r.user.username  %}
+				<a href="{% url 'update_review' review_id=r.id %}" class="btn btn-primary">Edit</a>
+				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteReview{{r.id}}">Delete</button>
+				{% else %}
+				<a href="{% url 'create_comment' review_id=r.id %}" class="btn btn-secondary">Comment</a>
+				{% endif %}
 			{% endif %}
-		{% endif %}
+			</div>
 		</div>
 		{% for comment in r.comment_set.all %}
 		<div class = "card">
@@ -121,6 +123,7 @@
 			</div>	
 		</div>
 	</div>
+</div>
 {% endblock %}
 
 {% block js %}
