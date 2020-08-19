@@ -13,7 +13,7 @@ class Review(models.Model):
 
 
 class Comment(models.Model):
-    text = models.TextField(blank=False)
+    comment = models.TextField(blank=False)
     datetime = models.DateTimeField(blank=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     review = models.ForeignKey(Review, on_delete=models.CASCADE)

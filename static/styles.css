@@ -1,5 +1,6 @@
 .index-card {
     border-style: none;
+    margin:20px !important;
 }
 
 .avatar {
@@ -9,22 +10,30 @@
 
 .course-logo {
     max-width:100% !important;
-    max-height:100% !important;
     height:auto;
-    width:auto;
     margin:auto !important;
-    display:flex;
+    margin-bottom:30px !important;
+}
+
+.img-icon {
+    transition: transform 0.5s;
+}
+
+@media (min-width: 980px) {
+  .img-icon:hover {
+    transform: scale(1.2);
+    transform-origin: center;
+    z-index: 1000;
+  }
 }
 
 .big-card {
-    max-width: 300px;
-    border-style: none;
+    max-width: 250px;
 }
 
 .mini-card {
     max-height:150px;
     max-width:120px;
-    border-style: none;
 }
 
 .card-img-div {

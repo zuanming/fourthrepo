@@ -55,10 +55,10 @@ def update_question(request, question_id):
     if request.method=="POST":
         update_question_form = QuestionForm(request.POST, instance = question_being_updated)
         if update_question_form.is_valid():
-            question.user = request.user
-            question.datetime = datetime.datetime.now()
-            question_form.save()
-            messages.success(request, f"New question posted!")
+            question_being_updated.user = request.user
+            question_being_updated.datetime = datetime.datetime.now()
+            question_being_updated.save()
+            messages.success(request, f"Question updated!")
             return redirect('view_forum')
     else:
         update_question_form = QuestionForm(instance = question_being_updated)

@@ -13,20 +13,20 @@
 
 <div class="row text-center justify-content-center main-div">
 	{% for tutor in tutors %}
-	<div class="card big-card col-md-4 col-6">
+	<div class="card big-card index-card col-md-4 col-6">
 		<a href="{% url 'view_tutor_details' tutor_id=tutor.id %}" class="card-body" style="height:100%">
-			<img class="img-fluid avatar" src="{{tutor.image_url}}" alt="tutor avatar img">
+			<img class="img-fluid avatar img-icon" src="{{tutor.image_url}}" alt="tutor avatar img">
 		</a>
 		<div class="card-body">
 			<h5 class="card-title">{{tutor.first_name}} {{tutor.last_name}}</h5>
 		</div>
 		<div class="card-body">
-			<a href="{% url 'view_tutor_details' tutor_id=tutor.id %}" class="btn btn-warning">Profile</a>
+			<a href="{% url 'view_tutor_details' tutor_id=tutor.id %}" class="btn btn-outline-warning">Profile</a>
 		</div>
 		{% if "Administrators" in groups %}
 		<div>
-			<a href="{% url 'update_tutor' tutor_id=tutor.id %}" class = "btn btn-info">Update</a>
-			<a href="{% url 'delete_tutor' tutor_id=tutor.id %}" class = "btn btn-danger">Delete</a>
+			<a href="{% url 'update_tutor' tutor_id=tutor.id %}" class = "btn btn-outline-info">Update</a>
+			<a href="{% url 'delete_tutor' tutor_id=tutor.id %}" class = "btn btn-outline-danger">Delete</a>
 		</div>
 		{% endif %}
 	</div>

@@ -2,10 +2,13 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h2>Add a comment to the following review</h2>
-<blockquote>
-    {{review.content}}
-</blockquote>
+<h3>Add a comment to the following review:</h3>
+<p class="mb-0"><i>
+    {{review.user}} - 
+</i></p>
+<p style="margin-bottom:30px;"><i>
+    "{{review.content}}"
+</i></p>
 <form method='POST'>
     {% csrf_token %}
     {{form|crispy}}

@@ -2,26 +2,29 @@
 {% load static %}
 
 {%block content %}
-{%for key, cart_item in cart.items %}
-<div class="card">
-    <div class="card-title">{{cart_item.title}}</div>
+<div class="card index-card" style="margin-top:30px;margin-bottom:30px;">
+    {%for key, cart_item in cart.items %}
     <div class="card-body">
-    <p>
-        Cost: {{cart_item.cost}}
-    </p>
-    <a class="btn btn-danger btn-sm" href="{% url 'remove_from_cart' course_id=cart_item.id %}">Remove</a>
+        <div class="card-title">{{cart_item.title}}</div>
+        <div class="card-body">
+        <p>
+            Price: ${{cart_item.cost|floatformat:2 }}
+        </p>
+        <a class="btn btn-danger btn-sm" href="{% url 'remove_from_cart' course_id=cart_item.id %}">Remove</a>
+        </div>
     </div>
+    {%endfor%}
 </div>
-{%endfor%}
-<div>
+<div class="main-div">
     {% if cart %}
+    <p>Total Price: ${{total|floatformat:2}}</p>
     {% if request.user.is_authenticated %}
     <a href="{% url 'checkout' %}" class="btn btn-success">Checkout</a>
     {% else %}
     <a href="{% url 'account_login' %}" class="btn btn-success">Sign in to Checkout!</a>
     {% endif %}
     {% else %}
-    <p>Your cart is empty! <a href="{% url 'view_courses' %}" class="stretched-link">Click here</a> to check out our courses!</p>
+    <p>Your cart is empty! Check out our courses <a href="{% url 'view_courses' %}" class="stretched-link">here</a>!</p>
     {% endif %}
 </div>
 
