@@ -1,0 +1,12 @@
+{% extends 'base.template.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>This action cannot be undone</h1>
+<p>Are you sure?</p>
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes"/>
+    <a href="{% url 'view_courses'%}">Cancel</a>
+</form>
+{% endblock %}

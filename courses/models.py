@@ -5,7 +5,7 @@ class Course(models.Model):
     logo_url = models.CharField(blank=False, max_length=255)
     description = models.TextField(blank=False)
     cost = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
-    tutors = models.ManyToManyField('Tutor')
+    # tutors = models.ManyToManyField('Tutor')
     devtype = models.ForeignKey('Devtype', on_delete=models.CASCADE)
     def __str__(self):
         return self.title
