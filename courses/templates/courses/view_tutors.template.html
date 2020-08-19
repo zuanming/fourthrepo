@@ -4,7 +4,11 @@
 {% block content %}
 <div class="text-center">
 	<h1>Tutors</h1>
+	{% if "Administrators" in groups %}
+	<a href="{% url 'create_tutor' %}" class = "btn btn-primary">Add Tutor</a>
+	{% else %}
 	<p>These are the tutors who will be teaching you coding!</p>
+	{% endif %}
 </div>	
 
 <div class="row text-center justify-content-center">
@@ -19,6 +23,12 @@
 		<div class="card-body">
 			<a href="{% url 'view_tutor_details' tutor_id=tutor.id %}" class="btn btn-warning">View profile</a>
 		</div>
+		{% if "Administrators" in groups %}
+		<div>
+			<a href="{% url 'update_tutor' tutor_id=tutor.id %}" class = "btn btn-info">Update</a>
+			<a href="{% url 'delete_tutor' tutor_id=tutor.id %}" class = "btn btn-danger">Delete</a>
+		</div>
+		{% endif %}
 	</div>
 	{% endfor %}
 </div>

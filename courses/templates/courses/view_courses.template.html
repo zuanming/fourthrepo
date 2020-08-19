@@ -3,10 +3,13 @@
 
 {% block content %}
 <div class="text-center">
-	<h1>Courses</h1>
-	<p>These are the courses we have to offer!</p>
+    <h1>Courses</h1>
+    {% if 'Administrators' in groups %}
+    <a href="{% url 'create_course' %" class='btn btn-primary'>Add Course</a>
+    {% else %}
+    <p>These are the courses we have to offer!</p>
+    {% endif %}
 </div>
-
 <div class="text-center">
     {% for devtype in devtypes %}
     <h2>{{devtype.title}}</h2>
@@ -27,9 +30,15 @@
                     {% elif course.title in cart_items %}
                     <button class="btn btn-dark" disabled>In Cart</button>
                     {% else %}
-                    <a href="{% url 'add_to_cart' course_id=course.id %}" class = "btn btn-info">Add to Cart</a>
+                    <a href="{% url 'add_to_cart' course_id=course.id %}" class = "btn btn-success">Add to Cart</a>
                     {% endif %}
                 </div>
+                {% if "Administrators" in groups %}
+                <div>
+                    <a href="{% url 'update_course' course_id=course.id %}" class = "btn btn-info">Update</a>
+                    <a href="{% url 'delete_course' course_id=course.id %}" class = "btn btn-danger">Delete</a>
+                </div>
+                {% endif %}
             </div>
             {% endif %}
         {% endfor %}
