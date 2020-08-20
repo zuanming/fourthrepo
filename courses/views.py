@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
+from django.shortcuts import render, HttpResponse, get_object_or_404, redirect, reverse
 from .models import Course, Tutor, Devtype
 from .forms import CourseForm, TutorForm
 from reviews.forms import ReviewForm
@@ -10,37 +10,35 @@ def index(request):
     return render(request, 'courses/index.template.html')
 
 
+def unauthorised(request):
+    return render(request, 'unauthorised.template.html')
+
+
 def view_courses(request):
     cart = request.session.get('shopping_cart', {})
     cart_items = [cart[course_id]['title'] for course_id in cart]
     courses = Course.objects.all()
     devtypes = Devtype.objects.all()
     purchased_courses = []
-    if request.user.is_authenticated:
-        purchased_courses =  [purchase.course for purchase in request.user.purchase_set.all()]  
     return render(request, "courses/view_courses.template.html", {
         'courses': courses,
         'devtypes': devtypes,
-        'purchased_courses': purchased_courses,
         'cart_items':cart_items,
     })
-
 
 
 def view_course_details(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     review_form = ReviewForm()
-    purchased_courses = []
-    if request.user.is_authenticated:
-        purchased_courses =  [purchase.course for purchase in request.user.purchase_set.all()]  
     return render(request, "courses/view_course_details.template.html", {
         'course': course,
         'form': review_form,
-        'purchased_courses': purchased_courses,
     })
 
 
 def create_course(request):
+    if not request.user.groups.filter(name="Administrators").exists():
+        return redirect(reverse(unauthorised))
     if request.method == "POST":
         create_course_form = CourseForm(request.POST)
         if create_course_form.is_valid():
@@ -57,7 +55,10 @@ def create_course(request):
                 'create_course_form':create_course_form
             })
 
+
 def update_course(request, course_id):
+    if not request.user.groups.filter(name="Administrators").exists():
+        return redirect(reverse(unauthorised))
     course_being_updated = get_object_or_404(Course, pk=course_id)
     if request.method == "POST":
         update_course_form = CourseForm(request.POST, instance=course_being_updated)
@@ -77,13 +78,15 @@ def update_course(request, course_id):
 
 
 def delete_course(request, course_id):
+    if not request.user.groups.filter(name="Administrators").exists():
+        return redirect(reverse(unauthorised))
     course = get_object_or_404(Course, pk=course_id)
     if request.method=="POST":
         course.delete()
         messages.success(request, f"Course Deleted!")
         return redirect('view_courses')
     else:
-        return render(request, 'courses/delete.template.html')
+        return render(request, 'courses/delete_course.template.html')
 
 
 def view_tutors(request):
@@ -94,6 +97,8 @@ def view_tutors(request):
 
 
 def create_tutor(request):
+    if not request.user.groups.filter(name="Administrators").exists():
+        return redirect(reverse(unauthorised))
     if request.method == "POST":
         create_tutor_form = TutorForm(request.POST)
         if create_tutor_form.is_valid():
@@ -112,6 +117,8 @@ def create_tutor(request):
 
 
 def update_tutor(request, tutor_id):
+    if not request.user.groups.filter(name="Administrators").exists():
+        return redirect(reverse(unauthorised))
     tutor_being_updated = get_object_or_404(Tutor, pk=tutor_id)
     if request.method == "POST":
         update_tutor_form = TutorForm(request.POST, instance=tutor_being_updated)
@@ -131,13 +138,15 @@ def update_tutor(request, tutor_id):
 
 
 def delete_tutor(request, tutor_id):
+    if not request.user.groups.filter(name="Administrators").exists():
+        return redirect(reverse(unauthorised))
     tutor = get_object_or_404(Tutor, pk=tutor_id)
     if request.method=="POST":
         tutor.delete()
         messages.success(request, f"Tutor Deleted!")
         return redirect('view_tutors')
     else:
-        return render(request, 'courses/delete.template.html')
+        return render(request, 'courses/delete_tutor.template.html')
 
 
 def view_tutor_details(request, tutor_id):

@@ -1,11 +1,16 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Question, Answer
 from .forms import QuestionForm, AnswerForm, SearchForm
 from courses.models import Course
+from courses.views import unauthorised
 from django.contrib.auth.decorators import login_required, permission_required
 import datetime
 from django.contrib import messages
 from django.db.models import Q
+
+
+def is_user(user, get_object):
+    return user.username == get_object.user.username
 
 
 def index(request):
@@ -33,6 +38,7 @@ def index(request):
     })
 
 
+@login_required
 def create_question(request):
     if request.method=="POST":
         question_form = QuestionForm(request.POST)
@@ -49,9 +55,11 @@ def create_question(request):
             'question_form':question_form
         })
 
-
+@login_required
 def update_question(request, question_id):
     question_being_updated = get_object_or_404(Question, pk=question_id)
+    if not is_user(request.user, question_being_updated):
+        return redirect(reverse(unauthorised))
     if request.method=="POST":
         update_question_form = QuestionForm(request.POST, instance = question_being_updated)
         if update_question_form.is_valid():
@@ -67,8 +75,11 @@ def update_question(request, question_id):
         })
 
 
+@login_required
 def delete_question(request, question_id):
     question_to_delete = get_object_or_404(Question, pk=question_id)
+    if not is_user(request.user, question_to_delete):
+        return redirect(reverse(unauthorised))
     if request.method == 'POST':
         question_to_delete.delete()
         messages.success(request, f"Question removed!")
@@ -79,6 +90,7 @@ def delete_question(request, question_id):
         })
 
 
+@login_required
 def create_answer(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     if request.method=="POST":
@@ -99,8 +111,11 @@ def create_answer(request, question_id):
         })
 
 
+@login_required
 def update_answer(request, answer_id):
     answer_being_updated = get_object_or_404(Answer, pk=answer_id)
+    if not is_user(request.user, answer_being_updated):
+        return redirect(reverse(unauthorised))
     if request.method=="POST":
         update_answer_form = AnswerForm(request.POST, instance = answer_being_updated)
         if update_answer_form.is_valid():
@@ -110,14 +125,17 @@ def update_answer(request, answer_id):
             answer.success(request, f"Answer updated!")
             return redirect('view_forum')
     else:
-        update_answer_form = AnswerForm(instance = question_being_updated)
+        update_answer_form = AnswerForm(instance = answer_being_updated)
         return render(request, "forum/update_answer.template.html", {
             'update_answer_form': update_answer_form
         })
 
 
+@login_required
 def delete_answer(request, answer_id):
     answer_to_delete = get_object_or_404(Answer, pk=answer_id)
+    if not is_user(request.user, answer_to_delete):
+        return redirect(reverse(unauthorised))
     if request.method == 'POST':
         answer_to_delete.delete()
         messages.success(request, f"Answer removed!")

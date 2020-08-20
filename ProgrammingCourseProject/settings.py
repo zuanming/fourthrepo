@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'cart.contexts.cart_quantity',
                 'courses.contexts.user_groups',
+                'courses.contexts.purchased_courses'
             ],
         },
     },

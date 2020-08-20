@@ -6,6 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', courses.views.index, name='index'),
+    path('unauthorised/', courses.views.unauthorised, name='unauthorised'),
     path('courses/', include('courses.urls')),
     path('reviews/', include('reviews.urls')),
     path('forum/', include('forum.urls')),
