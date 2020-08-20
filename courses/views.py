@@ -15,10 +15,9 @@ def view_courses(request):
     cart_items = [cart[course_id]['title'] for course_id in cart]
     courses = Course.objects.all()
     devtypes = Devtype.objects.all()
+    purchased_courses = []
     if request.user.is_authenticated:
-        purchased_courses =  [purchase.course for purchase in request.user.purchase_set.all()]
-    else:
-        purchased_courses = []
+        purchased_courses =  [purchase.course for purchase in request.user.purchase_set.all()]  
     return render(request, "courses/view_courses.template.html", {
         'courses': courses,
         'devtypes': devtypes,
@@ -31,9 +30,13 @@ def view_courses(request):
 def view_course_details(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     review_form = ReviewForm()
+    purchased_courses = []
+    if request.user.is_authenticated:
+        purchased_courses =  [purchase.course for purchase in request.user.purchase_set.all()]  
     return render(request, "courses/view_course_details.template.html", {
         'course': course,
         'form': review_form,
+        'purchased_courses': purchased_courses,
     })
 
 
