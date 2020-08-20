@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Review
 from .forms import ReviewForm, CommentForm
 from courses.models import Course
+from forum.views import is_user
+from courses.views import unauthorised
+from django.contrib.auth.decorators import login_required
 import datetime
 from django.contrib import messages
 
@@ -12,7 +15,7 @@ def index(request):
         'reviews':reviews
     })
 
-
+@login_required
 def create_review(request, course_id):
     if request.method == "POST":
         review_form = ReviewForm(request.POST)
@@ -30,8 +33,12 @@ def create_review(request, course_id):
         review_form = ReviewForm()
         return review_form
 
+
+@login_required
 def update_review(request, review_id):
     review_being_updated = get_object_or_404(Review, pk=review_id)
+    if not is_user(request.user, review_being_updated):
+        return redirect(reverse(unauthorised))
     if request.method == 'POST':
         update_review_form = ReviewForm(request.POST, instance=review_being_updated)
         if update_review_form.is_valid():
@@ -41,13 +48,16 @@ def update_review(request, review_id):
     else:
         update_review_form = ReviewForm(instance=review_being_updated)
         return render(request, 'reviews/update_review.template.html', {
-            'form': update_review_form,
+            'update_review_form': update_review_form,
             'course':review_being_updated.course
         })
 
 
+@login_required
 def delete_review(request, review_id):
     review_to_delete = get_object_or_404(Review, pk=review_id)
+    if not is_user(request.user, review_to_delete):
+        return redirect(reverse(unauthorised))
     if request.method == 'POST':
         review_to_delete.delete()
         messages.success(request, f"Review removed!")
