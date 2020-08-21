@@ -15,6 +15,7 @@ def index(request):
         'reviews':reviews
     })
 
+
 @login_required
 def create_review(request, course_id):
     if request.method == "POST":
@@ -31,7 +32,9 @@ def create_review(request, course_id):
             return redirect('view_course_details', course_id=review.course.id)
     else:
         review_form = ReviewForm()
-        return review_form
+        return render(request, 'create_review.template.html', {
+            'form':review_form
+        })
 
 
 @login_required
@@ -48,7 +51,7 @@ def update_review(request, review_id):
     else:
         update_review_form = ReviewForm(instance=review_being_updated)
         return render(request, 'reviews/update_review.template.html', {
-            'update_review_form': update_review_form,
+            'form': update_review_form,
             'course':review_being_updated.course
         })
 
