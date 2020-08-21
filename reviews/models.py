@@ -18,4 +18,4 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     review = models.ForeignKey(Review, on_delete=models.CASCADE)
     def __str__(self):
-        return self.text[0:50]
+        return self.comment[0:50]

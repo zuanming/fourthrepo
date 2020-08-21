@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'reviews',
     'forum',
     'cart',
-    'checkout'
+    'checkout',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -154,3 +155,8 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 SIGNING_SECRET = os.environ.get("SIGNING_SECRET")
+CLOUDINARY = {
+    'cloud_name': os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    'api_key': os.environ.get("CLOUDINARY_API_KEY"),
+    'api_secret': os.environ.get("CLOUDINARY_API_SECRET"),
+}
