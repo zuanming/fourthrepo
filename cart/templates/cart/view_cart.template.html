@@ -4,18 +4,25 @@
 {%block content %}
 <div class="card index-card" style="margin-top:30px;margin-bottom:30px;">
     {%for key, cart_item in cart.items %}
-    <div class="card-body">
-        <div class="card-title">{{cart_item.title}}</div>
-        <div class="card-body">
-        <p>
-            Price: ${{cart_item.cost|floatformat:2 }}
-        </p>
-        <a class="btn btn-danger btn-sm" href="{% url 'remove_from_cart' course_id=cart_item.id %}">Remove</a>
+    <div class="card">
+        <div class="d-inline-flex flex-row card-body justify-content-center align-items-center">
+            <div class="m-3">
+                <img src="{{cart_item.img}}" class="mr-3" style="width:80px;">
+            </div>
+            <div class="m-3 mr-auto">
+                <h5 class="card-title">{{cart_item.title}}</h5>
+                <p>
+                    Price: ${{cart_item.cost|floatformat:2 }}
+                </p>
+            </div>
+            <div class="m-3">
+                <a class="btn btn-danger btn-sm" href="{% url 'remove_from_cart' course_id=cart_item.id %}">Remove</a>
+            </div>
         </div>
     </div>
     {%endfor%}
 </div>
-<div class="main-div">
+<div class="main-div card-body">
     {% if cart %}
     <p>Total Price: ${{total|floatformat:2}}</p>
     {% if request.user.is_authenticated %}

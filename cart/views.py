@@ -12,6 +12,7 @@ def add_to_cart(request, course_id):
             'title': course.title,
             'cost': float(course.cost),
             'qty': 1,
+            'img': course.logo_url,
         }
         request.session['shopping_cart'] = cart
         messages.success(request, f"'{cart[course_id]['title']}' added to cart!")
