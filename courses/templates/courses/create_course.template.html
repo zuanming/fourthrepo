@@ -7,5 +7,6 @@
     {% csrf_token %}
     {{create_course_form|crispy}}
     <input type = 'submit' class = "btn btn-info" value = 'Add'/>
+    <a href="{% url 'view_courses' %}" class = "btn btn-danger">Cancel</a>
 </form>
 {% endblock%}

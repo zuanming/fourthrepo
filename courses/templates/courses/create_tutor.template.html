@@ -7,5 +7,6 @@
     {% csrf_token %}
     {{create_tutor_form|crispy}}
     <input type = 'submit' class = "btn btn-info" value = 'Add'/>
+    <a href="{% url 'view_tutors' %}" class = "btn btn-danger">Cancel</a>
 </form>
 {% endblock%}
