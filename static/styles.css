@@ -71,3 +71,7 @@
 .active > a {
     color:white !important;
 }
+
+footer {
+    background-color: lightgrey;
+}
