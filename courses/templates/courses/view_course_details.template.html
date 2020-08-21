@@ -42,7 +42,7 @@
 {% endif %}
 
 <div class="main-div">
-	{% for r in course.review_set.all %}
+	{% for r in course.review_set.all|dictsortreversed:'datetime' %}
 	<div class="card review-id" data-review-id = "{{r.id}}">
 		<div class = "card-body">
 			<div class="card-title">

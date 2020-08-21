@@ -14,7 +14,7 @@ def is_user(user, get_object):
 
 
 def index(request):
-    questions = Question.objects.all()
+    questions = Question.objects.order_by('datetime').reverse()
     courses = Course.objects.all()
     if request.GET:
         queries = ~Q(pk__in=[])
