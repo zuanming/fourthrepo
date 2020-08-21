@@ -79,3 +79,8 @@ body {
 footer {
     background-color: lightgrey;
 }
+
+.nav-item {
+    margin-left:5px !important;
+    margin-right:5px !important;
+}

@@ -18,13 +18,15 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-      <a href="{% url 'index' %}" class="navbar-brand mb-0 h1">FSDev</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+      <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li id="navbar-brand" class="nav-item">
+            <a class="nav-link navbar-brand mb-0 h1" href="{% url 'index' %}">FSDev</a>
+          </li>      
           <li id="navbar-courses" class="nav-item">
             <a class="nav-link" href="{% url 'view_courses' %}">Courses</a>
           </li>
