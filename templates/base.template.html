@@ -34,13 +34,19 @@
           <li id="navbar-forum" class="nav-item">
             <a class="nav-link" href="{% url 'view_forum' %}">Forum</a>
           </li>
+          {% if 'Administrators' not in groups %}
           <li id="navbar-cart" class="nav-item">
             <a class="nav-link" href="{% url 'view_cart' %}">Cart({{cart_quantity}})</a>
           </li>
+          {% endif %}
           {% if request.user.is_authenticated %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {% if 'Administrators' in groups %}
+              Staff ({{request.user.username }})
+              {% else %}
               Account ({{request.user.username }})
+              {% endif %}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="{% url 'account_reset_password'%}">Change Password</a>
