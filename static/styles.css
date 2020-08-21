@@ -62,3 +62,12 @@
 .main-div {
     margin-bottom: 60px;
 }
+
+.active {
+    background-color: grey !important;
+    border-radius:10px;
+}
+
+.active > a {
+    color:white !important;
+}
