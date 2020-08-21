@@ -15,25 +15,35 @@ def is_user(user, get_object):
 
 def index(request):
     questions = Question.objects.order_by('datetime').reverse()
+    search_result= questions
+    searched_title=None
+    searched_course=None
     courses = Course.objects.all()
+
     if request.GET:
         queries = ~Q(pk__in=[])
 
         if 'title' in request.GET and request.GET['title']:
+            searched_title=request.GET['title']
             title = request.GET['title']
             print(title)
             queries = queries & Q(title__icontains=title)
 
         if 'course' in request.GET and request.GET['course']:
             course = request.GET['course']
+            searched_course= get_object_or_404(Course, pk=course)
             queries = queries & Q(course__in=course)
 
-        questions = questions.filter(queries)
-        
+        search_result = questions.filter(queries)
+    if searched_course==None:
+        searched_course="All Courses"
     search_form = SearchForm(request.GET)
     return render(request, 'forum/index.template.html', {
         'courses': courses,
         'questions': questions,
+        'search_result':search_result,
+        'searched_title':searched_title,
+        'searched_course':searched_course,
         'search_form': search_form
     })
 

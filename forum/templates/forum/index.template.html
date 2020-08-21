@@ -20,8 +20,16 @@
               {{ search_form.course|as_crispy_field }}
             </div>
           </div>
-        <input type="submit" class="btn btn-outline-secondary" value="Search"/>
+        <input type="submit" class="btn btn-outline-secondary mb-3" value="Search"/>
     </form>
+    {% if search_result.count is not questions.count %}
+    <div class="mb-3">
+        <i>Your search 
+            {% if searched_title is not None %} for "{{searched_title}}" {% endif %} 
+            in "{{searched_course}}" returned {{search_result.count}} result(s).</i>   
+    </div>
+    {% endif %}
+
 </div>
 
 {% if request.user.is_authenticated %}
@@ -31,7 +39,7 @@
 {% endif %}
 
 <div class = "container">
-    {% for question in questions %}
+    {% for question in search_result %}
     <div class="card mb-3 mainpost">
         <div class="card-body">
             <h4 class="card-title mb-3">{{question.title}} <span class="text-muted font-weight-light font-italic" > - {{question.course}}</span></h4>
