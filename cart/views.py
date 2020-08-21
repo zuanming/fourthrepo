@@ -19,7 +19,6 @@ def add_to_cart(request, course_id):
     else:
         messages.error(request, f"'{cart[course_id]['title']}' is already in the cart!'")
         return redirect(reverse('view_courses'))
-    
 
 
 def view_cart(request):

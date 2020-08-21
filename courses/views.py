@@ -73,7 +73,7 @@ def update_course(request, course_id):
     else:
         update_course_form = CourseForm(instance=course_being_updated)
         return render(request, 'courses/update_course.template.html',{
-                'update_course_form':update_course_form
+                'update_course_form':update_course_form,
             })
 
 
@@ -133,7 +133,7 @@ def update_tutor(request, tutor_id):
     else:
         update_tutor_form = TutorForm(instance=tutor_being_updated)
         return render(request, 'courses/update_tutor.template.html',{
-                'update_tutor_form':update_tutor_form
+                'update_tutor_form':update_tutor_form,
             })
 
 
