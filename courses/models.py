@@ -1,5 +1,4 @@
 from django.db import models
-# from cloudinary.models import CloudinaryField
 
 class Course(models.Model):
     title = models.CharField(blank=False, max_length=255)
@@ -7,7 +6,6 @@ class Course(models.Model):
     description = models.TextField(blank=False)
     cost = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     devtype = models.ForeignKey('Devtype', on_delete=models.CASCADE)
-    # logo = CloudinaryField()
     def __str__(self):
         return self.title
 
