@@ -1,6 +1,6 @@
 {% extends 'base.template.html' %}
 {% load crispy_forms_tags %}
-{% load cloudinary %}
+<!-- {% load cloudinary %} -->
 {% load static %}
 
 {% block content %}
@@ -12,23 +12,22 @@
         <input type = 'submit' class = "btn btn-info" value = 'Add'/>
         <a href="{% url 'view_courses' %}" class = "btn btn-danger">Cancel</a>
     </form>
-    
 </div>
 
-<div class="status">
+<!-- <div class="status">
     <h2>Status</h2>
     <span class="status_value">Idle</span>
 </div>
 
 <div class="uploaded_info_holder">
 
-</div>
+</div> -->
 {% endblock%}
 
 {% block js %}
-{% cloudinary_includes %}
-{% cloudinary_js_config %}
-<script>
+<!-- {% cloudinary_includes %}
+{% cloudinary_js_config %} -->
+<!-- <script>
   function prettydump(obj) {
     ret = ""
     $.each(obj, function(key, value) {
@@ -48,7 +47,7 @@
       },
     })
     .on('cloudinarydone', function (e, data) {
-        $('.status_value').text('Updating backend...');
+        $('.status_value').text('Uploaded.');
         var info = $('<div class="uploaded_info"/>');
         $(info).append($('<div class="data"/>').append(prettydump(data.result)));
         $(info).append($('<div class="image"/>').append(
@@ -57,8 +56,8 @@
            })
         ));
         $('.uploaded_info_holder').append(info);
-        // $('#form  input[type="file"]').parent().parent().remove();
+        $('#form  input[type="file"]').parent().parent().remove();
     });
   });
-</script>
+</script> -->
 {% endblock %}

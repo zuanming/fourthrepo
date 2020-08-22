@@ -60,6 +60,7 @@ def update_course(request, course_id):
     if not request.user.groups.filter(name="Administrators").exists():
         return redirect(reverse(unauthorised))
     course_being_updated = get_object_or_404(Course, pk=course_id)
+
     if request.method == "POST":
         update_course_form = CourseForm(request.POST, instance=course_being_updated)
         if update_course_form.is_valid():
