@@ -2,6 +2,12 @@ body {
     margin-bottom:80px;
 }
 
+.main-logo {
+    border-radius:10px;
+    width:100px;
+    height:100px;
+}
+
 .card {
     background-color: transparent !important;
 }
@@ -83,4 +89,20 @@ footer {
 .nav-item {
     margin-left:5px !important;
     margin-right:5px !important;
+}
+
+ .featurette-divider {
+  margin: 80px 0;
+}
+ .featurette {
+  overflow: hidden;
+}
+ .featurette-image {
+  margin-top: −100px;
+}
+ .featurette-heading {
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
 }

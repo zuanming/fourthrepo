@@ -1,1 +1,63 @@
 {% extends "base.template.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container" style="margin-top:150px;margin-bottom:150px;">
+    <section class="text-center">
+        <img src="{% static 'images/main-logo.png' %}" alt="FSDev LOGO" class="main-logo"/>
+        <h1>Be a developer today.</h1>
+        <h5 style="color:#838E95;">Sign up for a course at FSDev and start building your own website.</h5>
+        {% if request.user.is_authenticated %}
+        <a class="btn btn-primary" style="color:white;" href="{% url 'account_signup' %}">View Courses</a>
+        {% else %}
+        <a class="btn btn-primary" style="color:white;" href="{% url 'account_signup' %}">Sign up now!</a>
+        {% endif %}
+    </section>
+</div>
+
+<div class="container">
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+        <h2 class="featurette-heading">Take up a course today - <span class="text-muted">Be a fullstack developer in no time.</span></h2>
+        <p class="lead">At FSDev, our courses take you step-by-step from building simple websites to styling and to higher-level function implementations. You'd be surprised at what you will be able to create.</p>
+        </div>
+        <div class="col-md-5">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{% static 'images/courses.png' %}" alt="courses picture"/>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Our tutors don't just teach - <span class="text-muted">They make sure you understand.</span></h2>
+        <p class="lead"><q>A teacher who establishes rapport with the taught, becomes one with them, learns more from them than he teaches them.</q><cite>(Mahatma Gandhi, 1869 – 1948)</cite></br>Our tutors are full-time developers, each excelling in their own fields. But what is knowledge if not to be shared?</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{% static 'images/learning.png' %}" alt="learning picture"/>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+        <h2 class="featurette-heading">A community driven forum - <span class="text-muted">No developer works alone.</span></h2>
+        <p class="lead">Have a question? Ask it. Know an answer to a question? Answer it. You can't know or remember everything by yourself; the FSDev forum is built to share the knowledge and queries of everyone - including our tutors.</p>
+        </div>
+        <div class="col-md-5">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{% static 'images/community.png' %}" alt="community picture"/>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+	$("#navbar-home").addClass("active");
+</script>
+{% endblock %}

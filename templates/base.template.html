@@ -8,7 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
 
     <!-- Website Icon -->
     <link rel = "icon" type = "image/png" href = "https://res.cloudinary.com/dhktrng6p/image/upload/v1597329928/Screenshot_2020-08-13_at_10.45.10_PM_g3fq7l.png">
@@ -17,60 +17,63 @@
     <title>{%block title%}{%endblock%}</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-          <li id="navbar-brand" class="nav-item">
-            <a class="navbar-brand mb-0 h1" href="{% url 'index' %}">FSDev</a>
-          </li>      
-          <li id="navbar-courses" class="nav-item">
-            <a class="nav-link" href="{% url 'view_courses' %}">Courses</a>
-          </li>
-          <li id="navbar-tutors" class="nav-item">
-            <a class="nav-link" href="{% url 'view_tutors' %}">Tutors</a>
-          </li>
-          <li id="navbar-forum" class="nav-item">
-            <a class="nav-link" href="{% url 'view_forum' %}">Forum</a>
-          </li>
-          {% if 'Administrators' not in groups %}
-          <li id="navbar-cart" class="nav-item">
-            <a class="nav-link" href="{% url 'view_cart' %}">Cart({{cart_quantity}})</a>
-          </li>
-          {% endif %}
-          <li id="navbar-allauth" class="nav-item dropdown ml-3">
-            {% if request.user.is_authenticated %}
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {% if 'Administrators' in groups %}
-              Staff ({{request.user.username }})
-              {% else %}
-              Account ({{request.user.username }})
-              {% endif %}
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{% url 'account_reset_password'%}">Change Password</a>
-              <a class="dropdown-item" href="{% url 'account_logout'%}">Logout</a>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+            <a class="navbar-brand" style="background-color:black;color:white;border-radius:10px;padding:10px">FSDev</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                <li id="navbar-home" class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>      
+                <li id="navbar-courses" class="nav-item">
+                    <a class="nav-link" href="{% url 'view_courses' %}">Courses</a>
+                </li>
+                <li id="navbar-tutors" class="nav-item">
+                    <a class="nav-link" href="{% url 'view_tutors' %}">Tutors</a>
+                </li>
+                <li id="navbar-forum" class="nav-item">
+                    <a class="nav-link" href="{% url 'view_forum' %}">Forum</a>
+                </li>
+                {% if 'Administrators' not in groups %}
+                <li id="navbar-cart" class="nav-item">
+                    <a class="nav-link" href="{% url 'view_cart' %}">Cart({{cart_quantity}})</a>
+                </li>
+                {% endif %}
+                <li id="navbar-allauth" class="nav-item dropdown ml-3">
+                    {% if request.user.is_authenticated %}
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {% if 'Administrators' in groups %}
+                    Staff ({{request.user.username }})
+                    {% else %}
+                    Account ({{request.user.username }})
+                    {% endif %}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'account_reset_password'%}">Change Password</a>
+                    <a class="dropdown-item" href="{% url 'account_logout'%}">Logout</a>
+                    </div>
+                    {% else %}
+                    <a class="nav-link" href="{% url 'account_login'%}">Login</a>
+                </li>
+                {% endif %}
+                </ul>
             </div>
-            {% else %}
-            <a class="nav-link" href="{% url 'account_login'%}">Login</a>
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-    </nav>
-    <div class="container">
-      {% if messages %}  
-      <div class='alert alert-success'>    
-          <div>
-              {% for message in messages %} {{ message }} {% endfor %}
-          </div>
-      </div>
-      {% endif %}
+        </nav>
+        {% if messages %}  
+        <div class='alert alert-success'>    
+            <div>
+                {% for message in messages %} {{ message }} {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </header>
+    <main>
     {%block content%}{%endblock%}
-    </div>
+    </main>
     <footer class="footer text-center p-2 fixed-bottom">
       <span class="text-muted"><small>Copyright 2020 &copy; FSDev. All Rights Reserved</small></span>
     </footer>
