@@ -18,7 +18,7 @@ def unauthorised(request):
 def view_courses(request):
     cart = request.session.get('shopping_cart', {})
     cart_items = [cart[course_id]['title'] for course_id in cart]
-    courses = Course.objects.all()
+    courses = Course.objects.all().order_by('id')
     devtypes = Devtype.objects.all()
     purchased_courses = []
     return render(request, "courses/view_courses.template.html", {
