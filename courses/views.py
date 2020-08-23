@@ -4,6 +4,7 @@ from .forms import CourseForm, TutorForm
 from reviews.forms import ReviewForm
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 
 def index(request):
@@ -29,10 +30,15 @@ def view_courses(request):
 
 def view_course_details(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
+    reviews = course.review_set.order_by('datetime').reverse()
     review_form = ReviewForm()
+    paginator = Paginator(reviews, 15) 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     return render(request, "courses/view_course_details.template.html", {
         'course': course,
         'form': review_form,
+        'page_obj': page_obj,
     })
 
 
