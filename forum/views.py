@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 import datetime
 from django.contrib import messages
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 
 def is_user(user, get_object):
@@ -26,7 +27,6 @@ def index(request):
         if 'title' in request.GET and request.GET['title']:
             searched_title=request.GET['title']
             title = request.GET['title']
-            print(title)
             queries = queries & Q(title__icontains=title)
 
         if 'course' in request.GET and request.GET['course']:
@@ -38,13 +38,18 @@ def index(request):
     if searched_course==None:
         searched_course="All Courses"
     search_form = SearchForm(request.GET)
+
+    paginator = Paginator(search_result, 15) 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     return render(request, 'forum/index.template.html', {
         'courses': courses,
         'questions': questions,
-        'search_result':search_result,
-        'searched_title':searched_title,
-        'searched_course':searched_course,
-        'search_form': search_form
+        'search_result': search_result,
+        'searched_title': searched_title,
+        'searched_course': searched_course,
+        'search_form': search_form,
+        'page_obj': page_obj
     })
 
 
