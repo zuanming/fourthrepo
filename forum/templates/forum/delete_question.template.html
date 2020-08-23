@@ -1,12 +1,21 @@
 {% extends 'base.template.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h1>This action cannot be undone</h1>
-<p>Are you sure?</p>
-<form method="POST">
-    {% csrf_token %}
-    <input type="submit" class="btn btn-danger" value="Yes"/>
-    <a href="{% url 'view_forum'%}">Cancel</a>
-</form>
+<div>
+    <h1>This action cannot be undone</h1>
+    <p>Are you sure?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Yes"/>
+        <a href="{% url 'view_forum'%}">Cancel</a>
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+  $("#navbar-forum").addClass("active");
+</script>
 {% endblock %}

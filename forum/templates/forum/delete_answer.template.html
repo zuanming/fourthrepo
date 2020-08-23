@@ -1,4 +1,5 @@
 {% extends 'base.template.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -9,4 +10,10 @@
     <input type="submit" class="btn btn-danger" value="Yes"/>
     <a href="{% url 'view_forum' %}">Cancel</a>
 </form>
+{% endblock %}
+
+{% block js %}
+<script>
+  $("#navbar-forum").addClass("active");
+</script>
 {% endblock %}

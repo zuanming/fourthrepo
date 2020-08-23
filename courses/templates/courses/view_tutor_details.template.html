@@ -3,39 +3,56 @@
 
 {% block content %}
 <div class="container text-center mt-3">
-	<img class="avatar mx-auto img-fluid big-card mb-3" src="{{tutor.image_url}}" alt="profile picture">
-	<h1>{{tutor.first_name}} {{tutor.last_name}}</h1>
+  <img
+    class="avatar mx-auto img-fluid big-card mb-3"
+    src="{{tutor.image_url}}"
+    alt="profile picture"
+  />
+  <h1>{{tutor.first_name}} {{tutor.last_name}}</h1>
 </div>
-<div class='container text-center main-div'>
-	{% if "Administrators" in groups %}
-	<div class="mb-3">
-		<a href="{% url 'update_tutor' tutor_id=tutor.id %}" class = "btn btn-outline-info">Update</a>
-		<a href="{% url 'delete_tutor' tutor_id=tutor.id %}" class = "btn btn-outline-danger">Delete</a>
-	</div>
-	{% endif %}
-	<h4>Teaches:</h4>
-	<div class="row justify-content-center">
-		{% for course in tutor.courses.all %}
-		<div class="card mini-card index-card">
-			<a href="{%url 'view_course_details' course_id=course.id %}" class="card-body">
-				<img class="card-img-top img-fluid course-logo my-auto" src="{{course.logo_url}}" alt="course logo img">
-			</a>
-			<div class="card-body">
-			  <h6 class="card-title">{{course.title}}</h6>
-			</div>
-		</div>
-		{% endfor %}
-	</div>
-	<div>
-		<p>{{tutor.summary}}</p>
-	</div>
+<div class="container text-center main-div">
+  {% if "Administrators" in groups %}
+  <div class="mb-3">
+    <a
+      href="{% url 'update_tutor' tutor_id=tutor.id %}"
+      class="btn btn-outline-info"
+      >Update</a
+    >
+    <a
+      href="{% url 'delete_tutor' tutor_id=tutor.id %}"
+      class="btn btn-outline-danger"
+      >Delete</a
+    >
+  </div>
+  {% endif %}
+  <h4>Teaches:</h4>
+  <div class="row justify-content-center">
+    {% for course in tutor.courses.all %}
+    <div class="card mini-card index-card">
+      <a
+        href="{%url 'view_course_details' course_id=course.id %}"
+        class="card-body"
+      >
+        <img
+          class="card-img-top img-fluid course-logo my-auto"
+          src="{{course.logo_url}}"
+          alt="course logo img"
+        />
+      </a>
+      <div class="card-body">
+        <h6 class="card-title">{{course.title}}</h6>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div>
+    <p>{{tutor.summary}}</p>
+  </div>
 </div>
-	
 {% endblock %}
-
 
 {% block js %}
 <script>
-	$("#navbar-tutors").addClass("active");
+  $("#navbar-tutors").addClass("active");
 </script>
 {% endblock %}

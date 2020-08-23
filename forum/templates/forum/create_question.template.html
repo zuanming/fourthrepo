@@ -1,11 +1,19 @@
 {% extends 'base.template.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h2>Ask a question</h2>
-<form method='POST'>
-    {% csrf_token %}
-    {{ question_form|crispy }}
-    <input type = 'submit' class = "btn btn-info" value = 'Ask!'/>
-</form>
+<div class="container">
+    <h2>Ask a question</h2>
+    <form method="POST">
+    {% csrf_token %} {{ question_form|crispy }}
+    <input type="submit" class="btn btn-info" value="Ask!" />
+    </form>
+</div>
 {% endblock%}
+
+{% block js %}
+<script>
+  $("#navbar-forum").addClass("active");
+</script>
+{% endblock %}

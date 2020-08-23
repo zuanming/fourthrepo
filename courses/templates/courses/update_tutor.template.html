@@ -1,12 +1,20 @@
 {% extends 'base.template.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
-<h2>Update Tutor Details</h2>
-<form method='POST'>
-    {% csrf_token %}
-    {{update_tutor_form|crispy}}
-    <input type = 'submit' class = "btn btn-info" value = 'Update'/>
-    <a href="{% url 'view_tutors' %}" class = "btn btn-danger">Cancel</a>
-</form>
+<div class="container">
+  <h2>Update Tutor Details</h2>
+  <form method="POST">
+    {% csrf_token %} {{update_tutor_form|crispy}}
+    <input type="submit" class="btn btn-info" value="Update" />
+    <a href="{% url 'view_tutors' %}" class="btn btn-danger">Cancel</a>
+  </form>
+</div>
 {% endblock%}
+
+{% block js %}
+<script>
+  $("#navbar-tutors").addClass("active");
+</script>
+{% endblock %}

@@ -3,10 +3,18 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<div>
     <form method="POST">
     {% csrf_token %}
     {{ update_question_form|crispy}}
     <input type="Submit" class="btn btn-primary"/>
     <a href="{% url 'view_forum' %}" class="btn btn-danger">Cancel</a>
     </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+  $("#navbar-forum").addClass("active");
+</script>
 {% endblock %}

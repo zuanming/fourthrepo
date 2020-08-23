@@ -3,150 +3,234 @@
 {%load static %}
 
 {% block content %}
-<div class="container text-center mt-3">
-	<img src="{{course.logo_url}}" class="img-fluid big-card mb-3" alt="logo image">
-	<h1>{{course.title}}</h1>
-</div>
-<div class="container text-center">
-	{% if "Administrators" in groups %}
-	<div class="mb-3">
-		<a href="{% url 'update_course' course_id=course.id %}" class = "btn btn-info">Update</a>
-		<a href="{% url 'delete_course' course_id=course.id %}" class = "btn btn-danger">Delete</a>
-	</div>
-	{% endif %}
+<div class="container">
+  <div class="text-center mt-3">
+    <img
+      src="{{course.logo_url}}"
+      class="img-fluid big-card mb-3"
+      alt="logo image"
+    />
+    <h1>{{course.title}}</h1>
+  </div>
+  <div class="container text-center">
+    {% if "Administrators" in groups %}
+    <div class="mb-3">
+      <a
+        href="{% url 'update_course' course_id=course.id %}"
+        class="btn btn-info"
+        >Update</a
+      >
+      <a
+        href="{% url 'delete_course' course_id=course.id %}"
+        class="btn btn-danger"
+        >Delete</a
+      >
+    </div>
+    {% endif %}
     <div>
-		<p>{{course.description}}</p>
-	</div>
-	<h4>Taught By</h4>
-	<div class="row justify-content-center">
-		{% for tutor in course.tutor_set.all %}
-		<div class="card mini-card index-card">
-			<a href="{%url 'view_tutor_details' tutor_id=tutor.id %}" class="card-body">
-				<img class="card-img-top img-fluid avatar my-auto" src="{{tutor.image_url}}" alt="tutor avatar img">
-			</a>
-			<div class="card-body">
-			  <h6 class="card-title">{{tutor.first_name}} {{tutor.last_name}}</h6>
-			</div>
-		</div>
-		{% endfor %}
-	</div>	
-</div>
-	
-<!--Reviews Section-->
-<h3>Reviews</h3>
+      <p>{{course.description}}</p>
+    </div>
+    <h4>Taught By</h4>
+    <div class="row justify-content-center">
+      {% for tutor in course.tutor_set.all %}
+      <div class="card mini-card index-card">
+        <a
+          href="{%url 'view_tutor_details' tutor_id=tutor.id %}"
+          class="card-body"
+        >
+          <img
+            class="card-img-top img-fluid avatar my-auto"
+            src="{{tutor.image_url}}"
+            alt="tutor avatar img"
+          />
+        </a>
+        <div class="card-body">
+          <h6 class="card-title">{{tutor.first_name}} {{tutor.last_name}}</h6>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 
-{% if request.user.is_authenticated and course in purchased_courses  %}
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createReview">
-	New Review
-</button>
-{% endif %}
+  <!--Reviews Section-->
+  <h3>Reviews</h3>
 
-<div class="main-div">
-	{% for r in page_obj %}
-	<div class="card review-id" data-review-id = "{{r.id}}">
-		<div class = "card-body">
-			<div class="card-title">
-				<h4 class="review-title">{{r.title}}</h4>
-			</div>
-			<div class="review-content ml-3 mb-3">
-				{{r.content}}
-			</div>
-			<p class="blockquote-footer ml-3">Posted by {{r.user.username}} at {{r.datetime|date:'d-M-Y H:i'}}</p>
-			
-			{%if request.user.is_authenticated and 'Administrators' not in groups %}
-			<div class="text-right">
-				{% if user.get_username == r.user.username  %}
-				<a href="{% url 'update_review' review_id=r.id %}" class="btn btn-primary">Edit</a>
-				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteReview{{r.id}}">Delete</button>
-				{% else %}
-				<a href="{% url 'create_comment' review_id=r.id %}" class="btn btn-secondary">Comment</a>
-				{% endif %}
-			</div>
-			{% endif %}
-			
-		</div>
-		{% for comment in r.comment_set.all %}
-		<div class = "card">
-			<div class = "card-footer text-right">
-				<p class="mt-3">{{comment.comment}}</p>
-				<p class="blockquote-footer mr-3">Posted by {{comment.user.username}} at {{comment.datetime|date:'d-M-Y H:i'}}</p>
-			</div>
-		</div>
-		{% endfor %}
-	</div>
+  {% if request.user.is_authenticated and course in purchased_courses %}
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-toggle="modal"
+    data-target="#createReview"
+  >
+    New Review
+  </button>
+  {% endif %}
 
+  <div class="main-div">
+    {% for r in page_obj %}
+    <div class="card review-id" data-review-id="{{r.id}}">
+      <div class="card-body">
+        <div class="card-title">
+          <h4 class="review-title">{{r.title}}</h4>
+        </div>
+        <div class="review-content ml-3 mb-3">
+          {{r.content}}
+        </div>
+        <p class="blockquote-footer ml-3">
+          Posted by {{r.user.username}} at {{r.datetime|date:'d-M-Y H:i'}}
+        </p>
 
-	<!-- Delete Review -->
-	<div class="modal fade" id="deleteReview{{r.id}}" tabindex="-1" aria-labelledby="deleteReviewLabel" aria-hidden="true">
-		<div class="modal-dialog">
-		  	<div class="modal-content">
-				<form method="POST" action="{% url 'delete_review' review_id=r.id %}">
-					{% csrf_token %}
-					<div class="modal-header">
-						<h5 class="modal-title danger" id="deleteReviewLabel">WARNING!</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<p>This action cannot be undone.</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-						<button type="submit" class="btn btn-danger">Delete</button>
-					</div>
-				</form>		
-			</div>	
-		</div>
-	</div>
-	{% endfor %}
+        {%if request.user.is_authenticated and 'Administrators' not in groups %}
+        <div class="text-right">
+          {% if user.get_username == r.user.username %}
+          <a
+            href="{% url 'update_review' review_id=r.id %}"
+            class="btn btn-primary"
+            >Edit</a
+          >
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-toggle="modal"
+            data-target="#deleteReview{{r.id}}"
+          >
+            Delete
+          </button>
+          {% else %}
+          <a
+            href="{% url 'create_comment' review_id=r.id %}"
+            class="btn btn-secondary"
+            >Comment</a
+          >
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+      {% for comment in r.comment_set.all %}
+      <div class="card">
+        <div class="card-footer text-right">
+          <p class="mt-3">{{comment.comment}}</p>
+          <p class="blockquote-footer mr-3">
+            Posted by {{comment.user.username}} at
+            {{comment.datetime|date:'d-M-Y H:i'}}
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
 
-	<!-- Create Review Form -->
-	<div class="modal fade" id="createReview" tabindex="-1" aria-labelledby="createReviewLabel" aria-hidden="true">
-		<div class="modal-dialog">
-		  	<div class="modal-content">
-				<form method="POST" action="{% url 'create_review' course_id=course.id %}">
-					<div class="modal-header">
-						<h5 class="modal-title" id="createReviewLabel">New Review</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick="this.form.reset()">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-					{% csrf_token %}
-					{{ form|crispy}}
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal" onClick="this.form.reset()">Dismiss</button>
-						<button type="submit" class="btn btn-primary">Submit</button>
-					</div>
-				</form>		
-			</div>	
-		</div>
-	</div>
-</div>
+    <!-- Delete Review -->
+    <div
+      class="modal fade"
+      id="deleteReview{{r.id}}"
+      tabindex="-1"
+      aria-labelledby="deleteReviewLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form method="POST" action="{% url 'delete_review' review_id=r.id %}">
+            {% csrf_token %}
+            <div class="modal-header">
+              <h5 class="modal-title danger" id="deleteReviewLabel">
+                WARNING!
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
 
-<div class="pagination">
+    <!-- Create Review Form -->
+    <div
+      class="modal fade"
+      id="createReview"
+      tabindex="-1"
+      aria-labelledby="createReviewLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form
+            method="POST"
+            action="{% url 'create_review' course_id=course.id %}"
+          >
+            <div class="modal-header">
+              <h5 class="modal-title" id="createReviewLabel">New Review</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                onClick="this.form.reset()"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {% csrf_token %} {{ form|crispy}}
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                onClick="this.form.reset()"
+              >
+                Dismiss
+              </button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination">
     <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
+      {% if page_obj.has_previous %}
+      <a href="?page=1">&laquo; first</a>
+      <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
+      <span class="current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
 
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">next</a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
     </span>
+  </div>
 </div>
 {% endblock %}
 
 {% block js %}
 <script>
-	$("#navbar-courses").addClass("active");
+  $("#navbar-courses").addClass("active");
 </script>
 {% endblock %}
