@@ -7,6 +7,6 @@
 <form method="POST">
     {% csrf_token %}
     <input type="submit" class="btn btn-danger" value="Yes"/>
-    <a href="{% url 'index'%}">Cancel</a>
+    <a href="{% url 'view_forum'%}">Cancel</a>
 </form>
 {% endblock %}

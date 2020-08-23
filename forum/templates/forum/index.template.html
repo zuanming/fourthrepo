@@ -51,6 +51,30 @@
             {% if user.get_username == question.user.username %}
             <a href="{% url 'update_question' question_id=question.id %}" class="btn btn-primary card-link">Edit</a>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteQuestion{{question.id}}">Delete</button>
+
+            <!-- Delete question modal form -->
+            <div class="modal fade" id="deleteQuestion{{question.id}}" tabindex="-1" aria-labelledby="deleteQuestionLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form method="POST" action="{% url 'delete_question' question_id=question.id %}">
+                            {% csrf_token %}
+                            <div class="modal-header">
+                                <h5 class="modal-title danger" id="deleteQuestionLabel">WARNING!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>This action cannot be undone.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
+                        </form>		
+                    </div>	
+                </div>
+            </div>
             {% else %}
             <a href="{% url 'create_answer' question_id=question.id %}" class="btn btn-secondary">Answer</a>
             {% endif %}
@@ -67,35 +91,37 @@
                 {% if user.get_username == answer.user.username %}
             <div>
                 <a href="{% url 'update_answer' answer_id=answer.id %}" class="btn btn-primary">Edit</a>
-                <a href="{% url 'delete_answer' answer_id=answer.id %}" class="btn btn-danger">Delete</a>
+                <!-- <a href="{% url 'delete_answer' answer_id=answer.id %}" class="btn btn-danger">Delete</a> -->
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAnswer{{answer.id}}">Delete</button>
+            </div>
+
+            <!-- Delete answer modal form -->
+            <div class="modal fade" id="deleteAnswer{{answer.id}}" tabindex="-1" aria-labelledby="deleteAnswerLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form method="POST" action="{% url 'delete_answer' answer_id=answer.id %}">
+                            {% csrf_token %}
+                            <div class="modal-header">
+                                <h5 class="modal-title danger" id="deleteAnswerLabel">WARNING!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>This action cannot be undone.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
+                        </form>		
+                    </div>	
+                </div>
             </div>
                 {% endif %}
             {% endif %}
         </div>
         {% endfor %}
-    </div>
-    
-    <div class="modal fade" id="deleteQuestion{{question.id}}" tabindex="-1" aria-labelledby="deleteQuestionLabel" aria-hidden="true">
-        <div class="modal-dialog">
-                <div class="modal-content">
-                <form method="POST" action="{% url 'delete_question' question_id=question.id %}">
-                    {% csrf_token %}
-                    <div class="modal-header">
-                        <h5 class="modal-title danger" id="deleteQuestionLabel">WARNING!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>This action cannot be undone.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </div>
-                </form>		
-            </div>	
-        </div>
     </div>
     {% endfor %}
 </div>
