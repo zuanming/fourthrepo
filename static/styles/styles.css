@@ -26,16 +26,16 @@ body {
     max-width:100% !important;
     height:auto;
     margin:auto !important;
-    margin-bottom:30px !important;
+    margin-bottom:20px !important;
 }
 
 .img-icon {
-    transition: transform 0.5s;
+    transition: transform 0.2s;
 }
 
 @media (min-width: 980px) {
   .img-icon:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     transform-origin: center;
     z-index: 1000;
   }
@@ -46,8 +46,8 @@ body {
 }
 
 .mini-card {
-    max-height:150px;
-    max-width:120px;
+    width:100px;
+    height:auto;
 }
 
 .card-img-div {

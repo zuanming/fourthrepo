@@ -97,7 +97,7 @@ def delete_course(request, course_id):
 
 
 def view_tutors(request):
-    tutors = Tutor.objects.all()
+    tutors = Tutor.objects.all().order_by('id')
     return render(request, "courses/view_tutors.template.html", {
         'tutors': tutors
     })

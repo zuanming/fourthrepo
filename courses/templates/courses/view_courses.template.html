@@ -4,8 +4,8 @@
 {% block content %}
  <div class="jumbotron">
     <div class="container">
-      <h1 class="display-3">Courses</h1>
-      <p>We have different types of courses for different types of aspiring developers. Frontend of backend, take your pick!</p>
+      <h1 class="display-4">Courses</h1>
+      <p>We have different types of courses for different types of aspiring developers. Frontend or backend, take your pick!</p>
     </div>
   </div>
 <div class="container text-center">
@@ -34,11 +34,12 @@
         />
       </a>
       <div class="text-center">
-        <h5 class="card-title">{{course.title}}</h5>
+        <h4 class="card-title">{{course.title}}</h4>
+        <h5 class="card-title">${{course.cost|floatformat:0}}</h5>
         <a
           href="{% url 'view_course_details' course_id=course.id %}"
           class="btn btn-outline-dark"
-          >Details</a
+          >View Details</a
         >
         {% if "Administrators" not in groups %}
         {% if course in purchased_courses %}

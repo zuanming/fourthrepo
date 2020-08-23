@@ -34,18 +34,16 @@
     <div class="row justify-content-center">
       {% for tutor in course.tutor_set.all %}
       <div class="card mini-card index-card">
-        <a
-          href="{%url 'view_tutor_details' tutor_id=tutor.id %}"
-          class="card-body"
-        >
+        <a href="{%url 'view_tutor_details' tutor_id=tutor.id %}"
+        style="margin-bottom:10px;">
           <img
             class="card-img-top img-fluid avatar my-auto"
             src="{{tutor.image_url}}"
             alt="tutor avatar img"
           />
         </a>
-        <div class="card-body">
-          <h6 class="card-title">{{tutor.first_name}} {{tutor.last_name}}</h6>
+        <div class="text-center">
+          <p class="card-title" style="font-size:0.8em;">{{tutor.first_name}} {{tutor.last_name}}</p>
         </div>
       </div>
       {% endfor %}

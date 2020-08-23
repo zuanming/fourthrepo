@@ -2,6 +2,12 @@
 {%load static %}
 
 {% block content %}
+<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-4">Tutors</h1>
+      <p>These are our tutors who will be teaching and guiding you on your route to become a fullstack developer. Find out more about them!</p>
+    </div>
+  </div>
 <div class="container">
   <div class="text-center">
     {% if "Administrators" in groups %}
@@ -18,7 +24,7 @@
       <a
         href="{% url 'view_tutor_details' tutor_id=tutor.id %}"
         class="card-body"
-        style="height: 100%;"
+        style="width: 100%;"
       >
         <img
           class="img-fluid avatar img-icon"
@@ -26,10 +32,10 @@
           alt="tutor avatar img"
         />
       </a>
-      <div class="card-body">
+      <div class="tex-center">
         <h5 class="card-title">{{tutor.first_name}} {{tutor.last_name}}</h5>
       </div>
-      <div class="card-body">
+      <div class="text-center">
         <a
           href="{% url 'view_tutor_details' tutor_id=tutor.id %}"
           class="btn btn-outline-warning"
