@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from courses.models import Course
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
+@login_required()
 def add_to_cart(request, course_id):
     cart = request.session.get('shopping_cart', {})
     if course_id not in cart:
