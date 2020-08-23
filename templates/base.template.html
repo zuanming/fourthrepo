@@ -18,14 +18,14 @@
   </head>
   <body>
     <header>
-        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-            <a class="navbar-brand" href="{% url 'index' %}">FSDev</a>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+            <a class="navbar-brand mr-auto" href="{% url 'index' %}">FSDev</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
             <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ml-auto">
                 <li id="navbar-home" class="nav-item">
                     <a class="nav-link" href="{% url 'index' %}">Home</a>
                 </li>      
@@ -38,7 +38,7 @@
                 <li id="navbar-forum" class="nav-item">
                     <a class="nav-link" href="{% url 'view_forum' %}">Forum</a>
                 </li>
-                {% if 'Administrators' not in groups %}
+                {% if 'Administrators' not in groups and request.user.is_authenticated %}
                 <li id="navbar-cart" class="nav-item">
                     <a class="nav-link" href="{% url 'view_cart' %}">Cart({{cart_quantity}})</a>
                 </li>
@@ -53,11 +53,11 @@
                     {% endif %}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{% url 'account_reset_password'%}">Change Password</a>
-                    <a class="dropdown-item" href="{% url 'account_logout'%}">Logout</a>
+                    <a class="dropdown-item" href="{% url 'account_reset_password'%}"><u>Change Password</u></a>
+                    <a class="dropdown-item" href="{% url 'account_logout'%}"><u>Logout</u></a>
                     </div>
                     {% else %}
-                    <a class="nav-link" href="{% url 'account_login'%}">Login</a>
+                    <a class="nav-link" href="{% url 'account_login'%}"><u>Login</u></a>
                 </li>
                 {% endif %}
                 </ul>
@@ -71,7 +71,7 @@
         </div>
         {% endif %}
     </header>
-    <main>
+    <main style="margin-top:56px;">
     {%block content%}{%endblock%}
     </main>
     <footer class="footer text-center p-2 fixed-bottom">
