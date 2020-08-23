@@ -3,9 +3,9 @@ body {
 }
 
 .main-logo {
-    border-radius:10px;
-    width:100px;
-    height:100px;
+    border-radius:20px;
+    width:250px;
+    height:250px;
 }
 
 .card {
