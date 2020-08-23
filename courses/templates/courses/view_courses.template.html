@@ -22,10 +22,11 @@
 <div class="container text-center main-div">
   {% for devtype in devtypes %}
   <h1 class="display-4">{{devtype.title}}</h1>
-  <div class="row justify-content-center mb-3">
+  <div class="row justify-content-left mb-3 flex-nowrap"
+  style="overflow-x:auto;">
     {% for course in courses %}
     {% if course.devtype.title == devtype.title %}
-    <div class="card big-card index-card col-md-4 col-6 mb-3">
+    <div class="card big-card index-card col-md-3 col-6 mb-3">
       <a href="{%url 'view_course_details' course_id=course.id %}">
         <img
           class="img-fluid course-logo img-icon"
