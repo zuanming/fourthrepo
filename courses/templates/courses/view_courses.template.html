@@ -7,7 +7,7 @@
       <h1 class="display-4">Courses</h1>
       <p>We have different types of courses for different types of aspiring developers. Frontend or backend, take your pick!</p>
     </div>
-  </div>
+  </div>  
 <div class="container text-center">
   {% if 'Administrators' in groups %}
   <p class="mt-3">For Staffs:</p>
@@ -20,7 +20,76 @@
   {% endif %}
 </div>
 <div class="container text-center main-div">
-  {% for devtype in devtypes %}
+
+
+{% for devtype in devtypes %}
+<h1 class="display-5 mt-5 mb-4">{{devtype.title}}</h1>
+<div id="myCarousel{{devtype.id}}" class="carousel slide w-100" data-interval="5000" data-ride="carousel">
+  <div class="carousel-inner w-100" role="listbox">
+    {% for course in courses %}
+    {% if course.devtype.title == devtype.title %}
+    <div class="carousel-item">
+      <div class="col-lg-4 col-md-6">
+        <div class="card big-card index-card mb-3">
+            <img
+            class="img-fluid course-logo img-icon"
+            src={{course.logo_url}}
+            alt="course logo img"
+            />
+            <div class="text-center">
+                <h4 class="card-title">{{course.title}}</h4>
+                <h5 class="card-title">${{course.cost|floatformat:0}}</h5>
+                <a
+                href="{% url 'view_course_details' course_id=course.id %}"
+                class="btn btn-outline-light"
+                >View Details</a
+                >
+                {% if "Administrators" not in groups %}
+                {% if course in purchased_courses %}
+                <button class="btn btn-light" disabled>Purchased</button>
+                {% elif course.title in cart_items %}
+                <button class="btn btn-success" disabled>In Cart</button>
+                {% else %}
+                <a
+                href="{% url 'add_to_cart' course_id=course.id %}"
+                class="btn btn-outline-success"
+                >Add to Cart</a
+                >
+                {% endif %}
+                {% endif %}
+            </div>
+            {% if "Administrators" in groups %}
+            <div class="text-center">
+                <a
+                href="{% url 'update_course' course_id=course.id %}"
+                class="btn btn-outline-info"
+                >Update</a
+                >
+                <a
+                href="{% url 'delete_course' course_id=course.id %}"
+                class="btn btn-outline-danger"
+                >Delete</a
+                >
+            </div>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <a class="carousel-control-prev bg-dark w-auto" href="#myCarousel{{devtype.id}}" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next bg-dark w-auto" href="#myCarousel{{devtype.id}}" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+{% endfor %}
+
+  <!-- {% for devtype in devtypes %}
   <h1 class="display-5 mt-4 mb-3">{{devtype.title}}</h1>
   <div class="row justify-content-left mb-3 pt-2 flex-nowrap scrolldiv"
   style="overflow-x:auto;">
@@ -74,12 +143,15 @@
     {% endif %}
     {% endfor %}
   </div>
-  {% endfor %}
+  {% endfor %} -->
 </div>
 {% endblock %}
 
 {% block js %}
 <script>
   $("#navbar-courses").addClass("active");
+  $('.carousel-inner').each(function(active) {
+    $(this).children('.carousel-item').first().addClass('active')
+  });
 </script>
 {% endblock %}
