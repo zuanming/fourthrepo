@@ -14,6 +14,10 @@ body {
     margin-bottom:80px;
 }
 
+.jumbotron {
+    background-color:rgb(78, 87, 97);
+}
+
 .main-logo {
     border-radius:20px;
     width:auto;
@@ -22,6 +26,8 @@ body {
 
 .card {
     background-color: transparent !important;
+    border-color:lightyellow !important;
+    border-radius:10px;
 }
 
 .index-card {
@@ -62,7 +68,9 @@ body {
 }
 
 .subpost {
-    color:darkgrey;
+    color:rgb(245,246,246);
+    background-color:rgb(66,61,70);
+    border-radius:10px !important;
 }
 
 .asteriskField {
@@ -78,7 +86,7 @@ body {
 }
 
 .active {
-    background-color: #007bff !important;
+    background-color: var(--codeblue) !important;
     border-radius:10px;
 }
 
@@ -87,12 +95,21 @@ body {
 }
 
 footer {
-    background-color: lightgrey;
+    background-color: rgb(51,41,64);
+}
+
+.navbar {
+    background-color:rgb(51,41,64);
 }
 
 .nav-item {
     margin-left:5px !important;
     margin-right:5px !important;
+}
+
+.nav-item .nav-link {
+    padding-left:10px !important;
+    padding-right:10px !important;
 }
 
  .featurette-divider {
