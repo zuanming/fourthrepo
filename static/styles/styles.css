@@ -140,6 +140,19 @@ footer {
     border-color:rgb(235,236,236);
 }
 
+.modal-content {
+    background-color:rgba(9, 9, 9);
+    color:inherit;
+}
+
+.danger {
+    color:var(--danger);
+}
+
+.cart-item {
+    max-width:800px !important;
+}
+
 @media (min-width: 980px) {
   .img-icon:hover {
     transform: scale(1.1);

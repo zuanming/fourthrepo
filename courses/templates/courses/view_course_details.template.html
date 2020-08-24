@@ -26,6 +26,21 @@
         >Delete</a
       >
     </div>
+    <div class="mb-3">
+        {% if "Administrators" not in groups %}
+        {% if course in purchased_courses %}
+        <button class="btn btn-light" disabled>Purchased</button>
+        {% elif course.title in cart_items %}
+        <button class="btn btn-success" disabled>In Cart</button>
+        {% else %}
+        <a
+          href="{% url 'add_to_cart' course_id=course.id %}"
+          class="btn btn-outline-success"
+          >Add to Cart</a
+        >
+        {% endif %}
+        {% endif %}
+    </div>
     {% endif %}
     <div>
       <p>{{course.description}}</p>
