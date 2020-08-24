@@ -37,10 +37,13 @@
   <a href="{% url 'account_login' %}" class="btn btn-success">Sign in to Checkout!</a>
     {% endif %}
   {% else %}
-  <p>
-    Your cart is empty! Check out our courses
-    <a href="{% url 'view_courses' %}" class="stretched-link">here</a>!
-  </p>
+  <div class="jumbotron">
+  <h1 class="display-6">Your cart is empty!</h1>
+        <p class="lead">
+         Check out our courses
+        <a href="{% url 'view_courses' %}" class="stretched-link">here</a>!
+    </p>
+  </div>
   {% endif %}
 </div>
 

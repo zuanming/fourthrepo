@@ -62,8 +62,8 @@
           {{question.datetime|date:'d-M-Y H:i'}}
         </p>
       </div>
+      {% if request.user.is_authenticated %}
       <div class="text-right card-body">
-        {% if request.user.is_authenticated %}
         {% if user.get_username == question.user.username %}
         <a href="{% url 'update_question' question_id=question.id %}"
           class="btn btn-primary card-link">
@@ -126,15 +126,18 @@
         {% else %}
         <a
           href="{% url 'create_answer' question_id=question.id %}"
-          class="btn btn-secondary"
+          class="btn btn-outline-success"
           >Answer</a
         >
         {% endif %}
-        {% endif %}
-      </div>
-
+        </div>
+      {% endif %}
+      
+      {% if question.answer_set.all %}
+      <button class="ansDiv btn btn-light" type="button">Show Answers</button>
+      {% endif %}
       {% for answer in question.answer_set.all %}
-      <div class="card-footer subpost text-right">
+      <div class="card-footer subpost text-right" style="display:none;">
         <div>
           <p class="card-text mr-3">{{answer.content}}</p>
           <p class="blockquote-footer mr-3">
@@ -149,7 +152,6 @@
             class="btn btn-primary"
             >Edit</a
           >
-          <!-- <a href="{% url 'delete_answer' answer_id=answer.id %}" class="btn btn-danger">Delete</a> -->
           <button
             type="button"
             class="btn btn-danger"
@@ -236,5 +238,21 @@
 {% block js %}
 <script>
   $("#navbar-forum").addClass("active");
+  $(".subpost").hide()
+</script>
+
+<!-- Toggle to show and side answers for each question -->
+<script>
+    $( ".ansDiv" ).each(function() {
+        $(this).on("click", function(){
+            if ($(this).siblings(".subpost").css("display") == "none"){
+                $(this).text('Hide Answers')
+                $(this).siblings(".subpost").show();
+            } else {
+                $(this).text('Show Answers')
+                $(this).siblings(".subpost").hide();
+            }
+        })
+    });
 </script>
 {% endblock %}

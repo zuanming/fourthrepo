@@ -1,4 +1,16 @@
+:root {
+    --codered:rgb(255,8,8);
+    --codelightblue:rgb(117,191,255);
+    --codeblue:rgb(82,149,204);
+    --codegreen:rgb(134,222,116);
+    --codepink:rgb(255,125,233);
+    --codepurple:rgb(184,141,254);
+}
+
+
 body {
+    background-color:rgba(9, 9, 9, 0.912);
+    color:lightgrey;
     margin-bottom:80px;
 }
 

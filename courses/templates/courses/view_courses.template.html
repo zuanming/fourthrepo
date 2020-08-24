@@ -32,6 +32,7 @@
           class="img-fluid course-logo img-icon"
           src="{{course.logo_url}}"
           alt="course logo img"
+          style="background-color:grey;border-radius:40px;"
         />
       </a>
       <div class="text-center">
@@ -39,7 +40,7 @@
         <h5 class="card-title">${{course.cost|floatformat:0}}</h5>
         <a
           href="{% url 'view_course_details' course_id=course.id %}"
-          class="btn btn-outline-dark"
+          class="btn btn-outline-light"
           >View Details</a
         >
         {% if "Administrators" not in groups %}
