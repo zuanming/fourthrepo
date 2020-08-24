@@ -4,16 +4,17 @@
 
 {% block content %}
 <div class="container">
-    <h2>Ask a question</h2>
-    <form method="POST">
-    {% csrf_token %} {{ question_form|crispy }}
-    <input type="submit" class="btn btn-info" value="Ask!" />
-    </form>
+	<h2>Ask a question</h2>
+	<form method="POST">
+		{% csrf_token %} {{ question_form|crispy }}
+		<input type="submit" class="btn btn-info" value="Ask!" />
+	</form>
+    <a href="{% url 'view_forum' %}" class="btn btn-danger mt-3">Cancel</a>
 </div>
 {% endblock%}
 
 {% block js %}
 <script>
-  $("#navbar-forum").addClass("active");
+	$("#navbar-forum").addClass("active");
 </script>
 {% endblock %}

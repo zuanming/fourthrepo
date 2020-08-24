@@ -4,12 +4,13 @@
 
 {% block content %}
 <div class="container">
+<h2>Update your answer!</h2>
     <form method="POST">
     {% csrf_token %}
     {{ update_answer_form|crispy}}
-    <input type="Submit" class="btn btn-primary" value="Update"/>
-    <a href="{% url 'view_forum' %}" class="btn btn-danger">Cancel</a>
+    <input type="Submit" class="btn btn-info" value="Update"/>
     </form>
+    <a href="{% url 'view_forum' %}" class="btn btn-danger mt-3">Cancel</a>
 </div>
 {% endblock %}
 

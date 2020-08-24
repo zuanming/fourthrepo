@@ -4,20 +4,32 @@
 
 {% block content %}
 <div class="container">
-    <h2>Post your answer!</h2></br>
-    <h5 class="mb-3">Question:</h5>
-    <h5 class="mb-3" ><i>- {{question.title}}</i></h5>
-    <h5 style="font-weight:normal;">"{{question.content}}"</h5>
-
-  <form method="POST">
-    {% csrf_token %} {{ answer_form|crispy }}
-    <input type="submit" class="btn btn-info" value="Answer!" />
-  </form>
+	<h2>Post your answer to this question!</h2></br>
+	<div class="card mb-3 mainpost">
+		<div class="card-body">
+			<h4 class="card-title mb-3">
+				{{question.title}}
+				<span class="text-muted font-weight-light font-italic">
+            - {{question.course}}
+          </span>
+			</h4>
+			<p class="card-title ml-3">{{question.content}}</p>
+			<p class="blockquote-footer card-text ml-3">
+				Posted by {{question.user.username}} at
+				{{question.datetime|date:'d-M-Y H:i'}}
+			</p>
+		</div>
+	</div>
+	<form method="POST">
+		{% csrf_token %} {{ answer_form|crispy }}
+		<input type="submit" class="btn btn-info" value="Answer!" />
+	</form>
+    <a href="{% url 'view_forum' %}" class="btn btn-danger mt-3">Cancel</a>
 </div>
 {% endblock%}
 
 {% block js %}
 <script>
-  $("#navbar-forum").addClass("active");
+	$("#navbar-forum").addClass("active");
 </script>
 {% endblock %}
