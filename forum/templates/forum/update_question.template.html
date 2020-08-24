@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div>
+<div class="container">
     <form method="POST">
     {% csrf_token %}
     {{ update_question_form|crispy}}

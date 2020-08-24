@@ -90,9 +90,8 @@
         console.log('submitted')
         var submitButton = $(this).find('input[type=submit]');
         $(this).append(`<button class="btn btn-primary" type="button" disabled>
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-  Loading...
-</button>`);
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...</button>`);
         submitButton.css('display', 'none');
     });
     </script>

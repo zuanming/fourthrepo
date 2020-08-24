@@ -134,6 +134,7 @@ def update_answer(request, answer_id):
     if request.method=="POST":
         update_answer_form = AnswerForm(request.POST, instance = answer_being_updated)
         if update_answer_form.is_valid():
+            answer = update_answer_form.save(commit=False)
             answer.user = request.user
             answer.datetime = datetime.datetime.now()
             answer.save()
