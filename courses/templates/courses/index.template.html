@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block content %}
-<div class="container" style="margin-top:150px;margin-bottom:200px;">
+<div class="container" style="margin-top:200px;margin-bottom:150px;">
     <section class="text-center">
-        <img src="{% static 'images/main-logo.gif' %}" alt="FSDev LOGO" class="main-logo img-fluid"/>
-        <h1>Be a developer today.</h1>
-        <h5 style="color:#838E95;">Sign up for a course at FSDev and start building your own website.</h5>
+        <img src="{% static 'images/main-logo.gif' %}" alt="FSDev LOGO" class="main-logo img-fluid mb-3"/>
+        <h1 class="mb-2">Be a developer today.</h1>
+        <h5 class="mb-3" style="color:#838E95;">Sign up for a course at FSDev and start building your own website.</h5>
         {% if request.user.is_authenticated %}
         <a class="btn btn-primary" style="color:white;" href="{% url 'account_signup' %}">View Courses</a>
         {% else %}

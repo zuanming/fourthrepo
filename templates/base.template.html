@@ -63,15 +63,15 @@
                 </ul>
             </div>
         </nav>
-        {% if messages %}  
-        <div class='alert alert-success'>    
-            <div>
-                {% for message in messages %} {{ message }} {% endfor %}
-            </div>
-        </div>
-        {% endif %}
     </header>
     <main style="margin-top:56px;">
+    {% if messages %}  
+        <div class='alert alert-success'>    
+            <div>
+                {% for m in messages %} {{ m }} {% endfor %}
+            </div>
+        </div>
+    {% endif %}
     {%block content%}{%endblock%}
     </main>
     <footer class="footer text-center p-2 fixed-bottom">
@@ -85,5 +85,16 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     {% block js %}{%endblock%}
+    <script>
+    $('form').on('submit', function(e){
+        console.log('submitted')
+        var submitButton = $(this).find('input[type=submit]');
+        $(this).append(`<button class="btn btn-primary" type="button" disabled>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Loading...
+</button>`);
+        submitButton.css('display', 'none');
+    });
+    </script>
   </body>
 </html>

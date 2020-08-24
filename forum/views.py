@@ -137,7 +137,7 @@ def update_answer(request, answer_id):
             answer.user = request.user
             answer.datetime = datetime.datetime.now()
             answer.save()
-            answer.success(request, f"Answer updated!")
+            messages.success(request, f"Answer updated!")
             return redirect('view_forum')
     else:
         update_answer_form = AnswerForm(instance = answer_being_updated)
