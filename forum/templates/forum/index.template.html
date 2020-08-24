@@ -133,7 +133,7 @@
       {% endif %}
       
       {% if question.answer_set.all %}
-      <button class="ansDiv btn btn-light" type="button" style="margin:15px;">Show Answers</button>
+      <button class="ansDiv btn btn-light" type="button" style="margin:15px;">Show Answers <span>&#9660;</span></button>
       {% endif %}
       {% for answer in question.answer_set.all %}
       <div class="card-footer subpost text-right" style="display:none;">
@@ -245,10 +245,10 @@
     $( ".ansDiv" ).each(function() {
         $(this).on("click", function(){
             if ($(this).siblings(".subpost").css("display") == "none"){
-                $(this).text('Hide Answers')
+                $(this).html('Hide Answers <span>&#9650;</span>')
                 $(this).siblings(".subpost").show();
             } else {
-                $(this).text('Show Answers')
+                $(this).html('Show Answers <span>&#9660;</span>')
                 $(this).siblings(".subpost").hide();
             }
         })
