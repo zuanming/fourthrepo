@@ -143,6 +143,8 @@ footer {
 .modal-content {
     background-color:rgba(9, 9, 9);
     color:inherit;
+    border-color:rgb(235,236,236);
+    border-radius:20px;
 }
 
 .danger {

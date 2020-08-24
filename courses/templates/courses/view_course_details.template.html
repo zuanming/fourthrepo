@@ -26,7 +26,9 @@
         >Delete</a
       >
     </div>
-    <div class="mb-3">
+    {% endif %}
+    <div class="mb-3 mt-3">
+        <h5>Price: ${{course.cost}}</h5>
         {% if "Administrators" not in groups %}
         {% if course in purchased_courses %}
         <button class="btn btn-light" disabled>Purchased</button>
@@ -41,7 +43,6 @@
         {% endif %}
         {% endif %}
     </div>
-    {% endif %}
     <div>
       <p>{{course.description}}</p>
     </div>

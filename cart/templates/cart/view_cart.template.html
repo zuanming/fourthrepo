@@ -29,9 +29,9 @@
     </div>
     {% endfor %}
     </div>
-    <div class="row main-div card-body cart-item justify-content-center">
+    <div class="row main-div card-body cart-item align-items-center justify-content-center">
     {% if cart %}
-    <p>Total Price: ${{total|floatformat:2}}</p>
+    <p class="my-auto mr-3">Total Price: ${{total|floatformat:2}}</p>
         {% if request.user.is_authenticated %}
     <a href="{% url 'checkout' %}" class="btn btn-success">Checkout</a>
         {% else %}

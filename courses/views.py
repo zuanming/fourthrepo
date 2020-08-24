@@ -20,7 +20,7 @@ def view_courses(request):
     cart_items = [cart[course_id]['title'] for course_id in cart]
     courses = Course.objects.all().order_by('id')
     devtypes = Devtype.objects.all()
-    # purchased_courses = []
+    purchased_courses = []
     return render(request, "courses/view_courses.template.html", {
         'courses': courses,
         'devtypes': devtypes,
