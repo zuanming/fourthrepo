@@ -9,8 +9,8 @@
   <form method="POST">
     {% csrf_token %}
     <input type="submit" class="btn btn-danger" value="Yes" />
-    <a href="{% url 'view_tutors'%}">Cancel</a>
   </form>
+  <a href="{% url 'view_tutors'%}" class="btn btn-light">Cancel</a>
 </div>
 {% endblock %}
 

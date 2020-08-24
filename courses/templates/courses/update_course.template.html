@@ -8,8 +8,8 @@
   <form method="POST" enctype="multipart/form-data" id="form">
     {% csrf_token %} {{update_course_form|crispy}}
     <input type="submit" class="btn btn-info" value="Update" />
-    <a href="{% url 'view_courses' %}" class="btn btn-danger">Cancel</a>
   </form>
+    <a href="{% url 'view_courses' %}" class="btn btn-danger mt-3">Cancel</a>
 </div>
 {% endblock %}
 
