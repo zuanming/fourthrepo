@@ -10,9 +10,13 @@
 
 
 body {
-    background-color:rgba(9, 9, 9, 0.912);
+    background-color:rgba(9, 9, 9, 0.9);
     color:lightgrey;
     margin-bottom:80px;
+}
+
+.scrolldiv {
+    background-color:rgba(200, 200, 200, 0.1) !important;
 }
 
 .jumbotron {
