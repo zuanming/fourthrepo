@@ -3,8 +3,8 @@
 {%load static %}
 
 {% block content %}
-<div class="container">
-  <div class="text-center mt-3">
+<div class="container pt-4">
+  <div class="text-center">
     <img
       src="{{course.logo_url}}"
       class="img-fluid big-card mb-3"
@@ -43,7 +43,7 @@
           />
         </a>
         <div class="text-center">
-          <p class="card-title" style="font-size:0.8em;">{{tutor.first_name}} {{tutor.last_name}}</p>
+          <p class="card-title" style="font-size:0.75em;">{{tutor.first_name}} {{tutor.last_name}}</p>
         </div>
       </div>
       {% endfor %}
@@ -66,7 +66,7 @@
 
   <div class="main-div">
     {% for r in page_obj %}
-    <div class="card review-id" data-review-id="{{r.id}}">
+    <div class="card review-id mb-3" data-review-id="{{r.id}}">
       <div class="card-body">
         <div class="card-title">
           <h4 class="review-title">{{r.title}}</h4>

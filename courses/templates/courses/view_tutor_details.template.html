@@ -2,7 +2,7 @@
 {%load static %}
 
 {% block content %}
-<div class="container text-center mt-3">
+<div class="container text-center pt-4">
   <img
     class="avatar mx-auto img-fluid big-card mb-3"
     src="{{tutor.image_url}}"
@@ -35,13 +35,14 @@
       <a href="{%url 'view_course_details' course_id=course.id %}">
         <img
           class="card-img-top img-fluid course-logo my-auto"
+          style="margin-bottom:10px;"
           style="margin-bottom:0 !important;"
           src="{{course.logo_url}}"
           alt="course logo img"
         />
       </a>
-      <div class="card-body">
-        <p class="card-title" style="font-size:0.8em;">{{course.title}}</p>
+      <div class="text-center">
+        <p class="card-title" style="font-size:0.75em;">{{course.title}}</p>
       </div>
     </div>
     {% endfor %}

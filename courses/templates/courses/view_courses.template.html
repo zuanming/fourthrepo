@@ -21,8 +21,8 @@
 </div>
 <div class="container text-center main-div">
   {% for devtype in devtypes %}
-  <h1 class="display-5">{{devtype.title}}</h1>
-  <div class="row justify-content-left mb-3 flex-nowrap scrolldiv"
+  <h1 class="display-5 mt-4 mb-3">{{devtype.title}}</h1>
+  <div class="row justify-content-left mb-3 pt-2 flex-nowrap scrolldiv"
   style="overflow-x:auto;">
     {% for course in courses %}
     {% if course.devtype.title == devtype.title %}

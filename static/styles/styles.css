@@ -16,7 +16,8 @@ body {
 }
 
 .scrolldiv {
-    background-color:rgba(200, 200, 200, 0.1) !important;
+    background-color:rgba(150, 150, 150, 0.1);
+    border-radius:20px;
 }
 
 .jumbotron {
@@ -31,7 +32,7 @@ body {
 
 .card {
     background-color: transparent !important;
-    border-color:lightyellow !important;
+    border-color:rgb(235,236,236) !important;
     border-radius:10px;
 }
 
