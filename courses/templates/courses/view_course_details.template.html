@@ -94,7 +94,7 @@
           Posted by {{r.user.username}} at {{r.datetime|date:'d-M-Y H:i'}}
         </p>
 
-        {%if request.user.is_authenticated and 'Administrators' not in groups %}
+        {%if request.user.is_authenticated %}
         <div class="text-right">
           {% if user.get_username == r.user.username %}
           <a
