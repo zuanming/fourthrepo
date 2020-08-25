@@ -1,39 +1,117 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+# FSDev
+### Data Centric Development Project (Code Institute)
 
-Welcome zuanming,
+This project is built as a webpage for`...`
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project.
+![Mockup image](`url` "Devices Mockup")
 
-## Gitpod Reminders
+## Objective
+`Simple write up`
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+External user’s goal:
+To `...`
 
-`python3 -m http.server`
+Site owner’s goal:
+To `...`
 
-A blue button should appear to click: *Make Public*,
+## Objective-based design
 
-Another blue button should appear to click: *Open Browser*.
+## UX 
+`wireframes` `responsiveness`
+The idea behind the UX is for simple navigation and to provide minimal steps for users to access the desired information required, with a clean and unclutered web interface.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
 
-A blue button should appear to click: *Make Public*,
+## UI
 
-Another blue button should appear to click: *Open Browser*.
+### Features
+The webpage has the following features:
+<!-- 
+- The home page layout displays the image of the restaurant in a structured and standardized format with essential information within one glance. 
+- Only key information is reflected to prevent overcrowding of the home page. 
+- Information can be easily retrieved by clicking on the image of the restaurant or the “View More” button. 
+- Upon hovering of the mouse over the logo, the logo will be highlighted. 
+    - Blue is used as a neutral colour to indicate update. 
+    - Red is used for delete to ensure that users do not click on the button. 
+    - Green is used for addititional information.
+    - Dark grey is to indicate navigating backwards.
+- Consistent background  across all the webpages. -->
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
+### Future Features
+- AJAX update - Store data in card div per review, on click extract data and put into empty form as values 
 
-## Updates Since The Instructional Video
+Forum checkbox for ‘answered question’ and ’this answered my question’
 
-We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
+Reviews.comments CRUD
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+Delete shows “-deleted_
+Edit shows “edited”
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+## Technologies Used
+The following programming languages and tools were used to build the website:
+* HTML 5
+* CSS 
+* JavaScript 
+* Bootstrap v4.4 toolkit to organize the elements in the page
+* jQuery library for DOM manipulation
+* Python 
+* Flask
+* Gitpod for the writing of codes and testing of website
+* Mongodb Atlas for the hosting of database
+* W3C Markup Validation Service for HTML and CSS validation
+* GitHub
+* Cloudinary image hosting
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+## Database
+- DB selected because of:
+- The database is hosted and stored postgres
+- `Database design`
 
---------
+## Testing
+The website has been tested for viewing and responsiveness on various screen sizes, including but not limited to the following web browsers and devices:
 
-Happy coding!
+* Apple Safari Web Browser
+    1. macOS 
+    2. Windows 10
+    3. iOS
+    4. iPadOS
+* Mozilla Firefox Web Browser
+    1. macOS
+    2. Windows 10
+    3. Android 10
+* Microsoft Edge Web Browser
+    1. macOS
+    2. Windows 10
+    3. Android 10
+* Google Chrome Web Browser
+    1. macOS
+    2. Windows 10
+    3. Android 10
+
+- HTML, CSS validated by W3C Markup Validation
+- JavaScript Syntax validated by Esprima
+
+1. Testing was first done by applying CRUD to `items` the built web interface. Upon successful CRUD operations and image uploading, the hosted webpage is then provided to random testers to test out the CRUD operations and UX and their feedback is taken into consideration.
+2. After the testing is done, additional features are added based on priority versus estimated time required to implement, remaining features will be added in the future. 
+3. The web application is then tested on various web browsers and device screens for compatibility purposes.
+4. The edited final web application is then updated onto the host server
+
+## Deployment
+The website is deployed on Heroku, using GitHub to host the project repository. The website can be found at this [link](http://foodiereview.herokuapp.com).
+- Database passwords and session keys are stored in the .env file which is included in the .gitignore.
+`steps taken to deploy`
+
+## Credits
+This website was built using tools and data from various sources, including but not limited to the following:
+
+- [Heroku](https://www.heroku.com) for the hosting of the web application.
+
+Photo by Wes Hicks on Unsplash
+Photo by John Schnobrich on Unsplash
+Canva logo
+https://material.io/design/color/dark-theme.html#ui-application
+
+Carousel
+https://www.jqueryscript.net/slider/responsive-bootstrap-carousel-multiple-items.html
+
+Last but not least, to [Trent Global](https://www.trentglobal.edu.sg/diplomainsoftwaredevelopment/?gclid=EAIaIQobChMI8M3ezf6t6QIV2BwrCh2R6A44EAAYASAAEgL6__D_BwE) and [Code Institute](https://codeinstitute.net) for the teachings and support to have made this project possible. 
