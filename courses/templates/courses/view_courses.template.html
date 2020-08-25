@@ -91,62 +91,7 @@
   </a>
 </div>
 {% endfor %}
-
-  <!-- {% for devtype in devtypes %}
-  <h1 class="display-5 mt-4 mb-3">{{devtype.title}}</h1>
-  <div class="row justify-content-left mb-3 pt-2 flex-nowrap scrolldiv"
-  style="overflow-x:auto;">
-    {% for course in courses %}
-    {% if course.devtype.title == devtype.title %}
-    <div class="card big-card index-card col-md-3 col-6 mb-3">
-      <a href="{%url 'view_course_details' course_id=course.id %}">
-        <img
-          class="img-fluid course-logo img-icon"
-          src="{{course.logo_url}}"
-          alt="course logo img"
-        />
-      </a>
-      <div class="text-center">
-        <h4 class="card-title">{{course.title}}</h4>
-        <h5 class="card-title">${{course.cost|floatformat:0}}</h5>
-        <a
-          href="{% url 'view_course_details' course_id=course.id %}"
-          class="btn btn-outline-light"
-          >View Details</a
-        >
-        {% if "Administrators" not in groups %}
-        {% if course in purchased_courses %}
-        <button class="btn btn-light" disabled>Purchased</button>
-        {% elif course.title in cart_items %}
-        <button class="btn btn-success" disabled>In Cart</button>
-        {% else %}
-        <a
-          href="{% url 'add_to_cart' course_id=course.id %}"
-          class="btn btn-outline-success"
-          >Add to Cart</a
-        >
-        {% endif %}
-        {% endif %}
-      </div>
-      {% if "Administrators" in groups %}
-      <div class="text-center">
-        <a
-          href="{% url 'update_course' course_id=course.id %}"
-          class="btn btn-outline-info"
-          >Update</a
-        >
-        <a
-          href="{% url 'delete_course' course_id=course.id %}"
-          class="btn btn-outline-danger"
-          >Delete</a
-        >
-      </div>
-      {% endif %}
-    </div>
-    {% endif %}
-    {% endfor %}
-  </div>
-  {% endfor %} -->
+  
 </div>
 {% endblock %}
 
