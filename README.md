@@ -114,4 +114,6 @@ https://material.io/design/color/dark-theme.html#ui-application
 Carousel
 https://www.jqueryscript.net/slider/responsive-bootstrap-carousel-multiple-items.html
 
+https://favicon.io/favicon-converter/
+
 Last but not least, to [Trent Global](https://www.trentglobal.edu.sg/diplomainsoftwaredevelopment/?gclid=EAIaIQobChMI8M3ezf6t6QIV2BwrCh2R6A44EAAYASAAEgL6__D_BwE) and [Code Institute](https://codeinstitute.net) for the teachings and support to have made this project possible. 
