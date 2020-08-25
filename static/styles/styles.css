@@ -165,7 +165,7 @@ h1 {
 
 @media (min-width: 980px) {
   .img-icon:hover {
-    transform: scale(1.1);
+    transform: translate(0px,-10px);
     transform-origin: center;
     z-index: 1000;
   }

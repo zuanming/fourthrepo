@@ -28,14 +28,17 @@
   <div class="carousel-inner w-100" role="listbox">
     {% for course in courses %}
     {% if course.devtype.title == devtype.title %}
-    <div class="carousel-item justify-content-center">
+    <div class="carousel-item">
       <div class="col-lg-4 col-md-6">
         <div class="card big-card index-card mb-3">
-            <img
-            class="img-fluid course-logo img-icon"
-            src={{course.logo_url}}
-            alt="course logo img"
-            />
+            <a
+            href="{% url 'view_course_details' course_id=course.id %}">
+                <img
+                class="img-fluid course-logo img-icon"
+                src={{course.logo_url}}
+                alt="course logo img"
+                />
+            </a>
             <div class="text-center">
                 <h4 class="card-title">{{course.title}}</h4>
                 <h5 class="card-title">${{course.cost|floatformat:0}}</h5>
