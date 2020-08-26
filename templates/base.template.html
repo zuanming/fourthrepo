@@ -98,9 +98,11 @@
 	</script>
 	<script src="{% static 'js/carousel.js' %}"></script>
 	{% block js %}{%endblock%}
+
+    <!-- Script to hide submit button and prevent multiple submission of forms-->
+    <!-- Display loading spinner in place of hidden button -->
 	<script>
 		$('form').on('submit', function(e){
-        console.log('submitted')
         var submitButton = $(this).find('input[type=submit]');
         $(this).append(`<button class="btn btn-light" type="button" disabled>
             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
