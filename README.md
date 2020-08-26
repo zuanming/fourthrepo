@@ -54,9 +54,11 @@ They are also unable to write reviews or comment on reviews.<br>
 
 **Administrators** are able to access the edit and delete function for the courses on both courses and course details pages to edit the courses provided. They can also add courses from the courses page if they wish to provide more content for sale. They are however unable to add items to cart.
 
-<img src="/static/images/readme/cart.jpeg" width="auto" height="300px" alt="course - wireframe">
-<img src="/static/images/readme/course-user.png" width="auto" height="300px" alt="course - user view">
-<img src="/static/images/readme/course-admin.png" width="auto" height="300px" alt="course - admin view">
+<p>
+  <img src="/static/images/readme/cart.jpeg" width="auto" height="300px" alt="course - wireframe">
+  <img src="/static/images/readme/course-user.png" width="auto" height="300px" alt="course - user view">
+  <img src="/static/images/readme/course-admin.png" width="auto" height="300px" alt="course - admin view">
+</p>
 
 ### Tutors
 This page displays the different tutors and similarly to courses, users can access the details page for each tutor.<br>
