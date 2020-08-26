@@ -37,8 +37,10 @@ The website is divided into 4 sections - **Courses**, **Tutors**, **Forum** and 
 * Each page is made mobile responsive for devices with smaller screens.
 
 #### Wireframe:
-
 <img src="/static/images/readme/wireframe.png" style="width:600px;height:auto;" alt="Devices Mockup">
+
+### Home Page
+<img src="/static/images/readme/home-page.png" style="width:600px;height:auto;" alt="Home Page">
 
 ### Courses
 This page displays the different courses grouped by the type of development, Frontend/Backend/Databases. 
@@ -51,6 +53,7 @@ They are also unable to write reviews or comment on reviews.<br>
 
 **Administrators** are able to access the edit and delete function for the courses on both courses and course details pages to edit the courses provided. They can also add courses from the courses page if they wish to provide more content for sale. They are however unable to add items to cart.
 
+<img src="/static/images/readme/cart.jpeg" style="width:auto;height:300px;" alt="course - wireframe">
 <img src="/static/images/readme/course-user.png" style="width:auto;height:300px;" alt="course - user view">
 <img src="/static/images/readme/course-admin.png" style="width:auto;height:300px;" alt="course - admin view">
 
@@ -62,11 +65,13 @@ This page displays the different tutors and similarly to courses, users can acce
 **Administrators** have similar privileges as in the courses page; they can add tutors, edit or delete them.
 
 ### Cart
-This page is for users to view what courses they are intending to purchase and check out their items for payment. If the item has been added to cart or purchased, the "add to cart" button will indicate that the item is already in cart.<br>
+This page is for users to view what courses they are intending to purchase and check out their items for payment. The "add to cart" button will automatically update its text and be disabled according to event i.e. "In cart" and "purchased" respectively.<br>
+
+<img src="/static/images/readme/navbar.jpeg" style="width:auto;height:250px;" alt="course - user view">
 
 **Non-Authenticated Users** & **Administrators** will not be able to access this page.<br>
-- Non-Authenticated User<br><img src="/static/images/readme/cart-nonauth.png" style="width:auto;height:50px;" alt="course - normal view"><br>
-- Admin User<br><img src="/static/images/readme/cart-admin.png" style="width:auto;height:50px;" alt="course - admin view"><br>
+- Non-Authenticated User<br><img src="/static/images/readme/cart-nonauth.png" style="width:auto;height:48px;" alt="course - normal view"><br>
+- Admin User<br><img src="/static/images/readme/cart-admin.png" style="width:auto;height:45px;" alt="course - admin view"><br>
 
 **Authenticated Users** will be able to access this page.
 - Authenticated User<br><img src="/static/images/readme/cart-user.png" style="width:auto;height:50px;" alt="course - user view"><br>
@@ -161,8 +166,10 @@ The website has been tested for viewing and responsiveness on various screen siz
 
 * HTML, CSS validated by W3C Markup Validation
 
-1. Testing was first done by applying CRUD to Courses and Tutors entities on the web interface using the administrator account and checked if they are displayed correctly. Tutors entities were subsequently added and related to courses. 
-2. The hosted webpage is then provided to random testers to test out the user authentication interface and function (sign up and login).
+1. Testing was first done by applying CRUD to Courses and Tutors entities using the Django Admin and SQLite database during the construction of the project. This was to ensure the django models were created properly according to the ERD.
+2. Upon successful deployment onto Heroku, the database was replaced with PostgreSQL.
+3. CRUD for the courses entity was once again tested on the deployed web interface and new database using the administrator account and checked if they Wireframe displayed correctly. Tutors entities were subsequently added and related to courses. 
+2. The deployed webpage is then provided to random testers to test out the user authentication interfaces and functions (sign up and login).
 3. Following this, the testers are directed to try making purchases to test the checkout process.
 4. This process is tried on different web browsers and devices to ensure the process is consistent.
 5. UI/UX feedback was taken into consideration and changes were made as required, such as color palettes and browsing interfaces 
@@ -174,10 +181,13 @@ The website has been tested for viewing and responsiveness on various screen siz
 
 The website is deployed on Heroku, using GitHub to host the project repository. The website can be found at this [link](http://programming-course-project.herokuapp.com).<br>
 The deployment process is as such:
-1. Code was written on gitpod using Code Institute's template. Heroku was installed in gitpod by:
-    pip3 install heroku
-- Database passwords and session keys are stored in the .env file which is included in the .gitignore.
-  `steps taken to deploy`
+1. Code was written on gitpod using Code Institute's template. Heroku was installed in gitpod and setup using an existing account.
+2. An application was created on heroku using an unique name and environment variables such as passwords and session keys were added to the application settings.
+3. Database was switched over to PostgreSQL as Heroku did not support SQLite.
+4. Content was populated again using interface as part of application testing.
+5. Deployed website was provided to testers for testing purposes, afterwhich adjustments were made.
+6. Code was pushed onto Heroku again after changes were done, and final testing was conducted to check the UI/UX elements and processes.
+7. Final adjustments were made and pushed onto Heroku for submission.
 
 ## Credits
 
@@ -185,14 +195,10 @@ This website was built using tools and data from various sources, including but 
 
 - [Heroku](https://www.heroku.com) for the hosting of the web application.
 
-Photo by Wes Hicks on Unsplash
-Photo by John Schnobrich on Unsplash
-Canva logo
-https://material.io/design/color/dark-theme.html#ui-application
+- [Unsplash](https://unsplash.com/) for the images on the cover page.
+- [Canva](https://material.io/design/color/dark-theme.html#ui-application) for the logo design
+- [jQuery script.net](https://www.jqueryscript.net/slider/responsive-bootstrap-carousel-multiple-items.html) for the multi-item responsive carousel sample
+- [favicon.io](https://favicon.io/favicon-converter) for the favicon generator 
+- [Wikimedia](https://commons.wikimedia.org/wiki/Main_Page) for the development platform logos
 
-Carousel
-https://www.jqueryscript.net/slider/responsive-bootstrap-carousel-multiple-items.html
-
-https://favicon.io/favicon-converter/
-
-Last but not least, to [Trent Global](https://www.trentglobal.edu.sg/diplomainsoftwaredevelopment/?gclid=EAIaIQobChMI8M3ezf6t6QIV2BwrCh2R6A44EAAYASAAEgL6__D_BwE) and [Code Institute](https://codeinstitute.net) for the teachings and support to have made this project possible.
+- **Last but not least, to [Trent Global](https://www.trentglobal.edu.sg/diplomainsoftwaredevelopment/?gclid=EAIaIQobChMI8M3ezf6t6QIV2BwrCh2R6A44EAAYASAAEgL6__D_BwE) and [Code Institute](https://codeinstitute.net) for the teachings and support to have made this project possible.**
