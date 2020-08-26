@@ -39,7 +39,7 @@ def index(request):
         searched_course="All Courses"
     search_form = SearchForm(request.GET)
 
-    paginator = Paginator(search_result, 15) 
+    paginator = Paginator(search_result, 8) 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'forum/index.template.html', {
