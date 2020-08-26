@@ -142,6 +142,9 @@ The following programming languages and tools were used to build the website:
 The deployed web application uses SQL database to store its data.
 - The entities are all inter-related, hence a relational database was required
 - SQL was selected instead of MongoDb which stores data in JSON format
+
+Entity Relationship Diagram:<br>
+<img src="/static/images/readme/erd.png" style="width:800px;height:auto;" alt="ERD">
     
 ***
 
