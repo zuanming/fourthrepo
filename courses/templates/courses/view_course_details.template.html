@@ -4,6 +4,8 @@
 
 {% block content %}
 <div class="container pt-4">
+
+  <!-- Main logo and details -->
   <div class="text-center">
     <img
       src="{{course.logo_url}}"
@@ -14,6 +16,7 @@
   </div>
   <div class="container text-center">
     {% if "Administrators" in groups %}
+    <!-- Edit and delete only accessible to Administrators -->
     <div class="mb-3">
       <a
         href="{% url 'update_course' course_id=course.id %}"
@@ -29,6 +32,7 @@
     {% endif %}
     <div class="mb-3 mt-3">
         <h5>Price: ${{course.cost}}</h5>
+        <!-- Add to cart button text to reflect if course is in cart or purchased -->
         {% if "Administrators" not in groups %}
         {% if course in purchased_courses %}
         <button class="btn btn-light" disabled>Purchased</button>
@@ -68,8 +72,8 @@
 
   <!--Reviews Section-->
   <h3 class="mb-3">Reviews</h3>
-
   {% if request.user.is_authenticated and course in purchased_courses %}
+  <!-- Add review button only for authenticated users to call up modal form -->
   <button
     type="button"
     class="btn btn-primary"
@@ -95,6 +99,7 @@
         </p>
 
         {%if request.user.is_authenticated %}
+        <!-- Only the user who posted can edit and delete their review -->
         <div class="text-right">
           {% if user.get_username == r.user.username %}
           <a
@@ -102,6 +107,7 @@
             class="btn btn-primary"
             >Edit</a
           >
+          <!-- Delete button to call up delete modal form -->
           <button
             type="button"
             class="btn btn-danger"
@@ -121,6 +127,7 @@
         {% endif %}
       </div>
       {% for comment in r.comment_set.all %}
+      <!-- Display all related comments -->
       <div class="card">
         <div class="card-footer text-right">
           <p class="mt-3">{{comment.comment}}</p>
@@ -133,7 +140,7 @@
       {% endfor %}
     </div>
 
-    <!-- Delete Review -->
+    <!-- Delete Review Hidden Modal form -->
     <div
       class="modal fade"
       id="deleteReview{{r.id}}"
@@ -177,7 +184,7 @@
     </div>
     {% endfor %}
 
-    <!-- Create Review Form -->
+    <!-- Create Review Hidden Modal Form -->
     <div
       class="modal fade"
       id="createReview"
