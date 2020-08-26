@@ -76,9 +76,10 @@ This page is for users to ask and answer questions, and a search function is pro
 Answers for each question are also available.
 
 **Administrators** and **Authenticated Users** will be able to create, edit and delete only the questions or answers that they have posted. They are only able to view the questions and answers posted by other users. 
+- Admin User & Authenticated User<br><img src="/static/images/readme/forum-auth.png" style="width:400px;height:auto;" alt="course - admin view"><br>
 
 **Non-Authenticated Users** will only be able to view and search for questions.
-- Non-Authenticated User<br><img src="/static/images/readme/forum-nonauth.png" style="width:auto;height:200px;" alt="course - admin view"><br>
+- Non-Authenticated User<br><img src="/static/images/readme/forum-nonauth.png" style="width:400px;height:auto;" alt="course - nonauth view"><br>
 
 In summary, **non-authenticated users** are limited to viewing content, whereas **authenticated users** are able to make purchases, write reviews and post questions or answers. 
 **Administrators** have the privilege to add, edit and delete the courses and tutors information as the site owner/administrator.
@@ -94,7 +95,7 @@ The website also has the following features:
 
 ### Courses and Tutors
 * The courses page is displayed with multi-carousels showing the course title, a logo image and its price for users to scroll through, separated into the types of development platforms.
-    * The multi-item carousel becomes a single-item carousel on mobile screens.
+    * The multi-item carousel reduces in items shown on smaller screens.
 * This is done to prevent the cluttering of information, by showing only critical details on the main pages and additional details in their detail pages.
 * Users can access the details page by either clicking on the "Profile" or "View Details" buttons for Tutors and Courses respectively or by clicking on the profile image or logo image.
 * Within each details page, the related tutors or courses are displayed in small cards and are hyperlinked to their respective details page for users to quickly navigate between pages for information.<br>
@@ -159,17 +160,22 @@ The website has been tested for viewing and responsiveness on various screen siz
   3. Android 10
 
 * HTML, CSS validated by W3C Markup Validation
-* JavaScript Syntax validated by Esprima
 
-1. Testing was first done by applying CRUD to `items` the built web interface. Upon successful CRUD operations and image uploading, the hosted webpage is then provided to random testers to test out the CRUD operations and UX and their feedback is taken into consideration.
-2. After the testing is done, additional features are added based on priority versus estimated time required to implement, remaining features will be added in the future.
-3. The web application is then tested on various web browsers and device screens for compatibility purposes.
-4. The edited final web application is then updated onto the host server
+1. Testing was first done by applying CRUD to Courses and Tutors entities on the web interface using the administrator account and checked if they are displayed correctly. Tutors entities were subsequently added and related to courses. 
+2. The hosted webpage is then provided to random testers to test out the user authentication interface and function (sign up and login).
+3. Following this, the testers are directed to try making purchases to test the checkout process.
+4. This process is tried on different web browsers and devices to ensure the process is consistent.
+5. UI/UX feedback was taken into consideration and changes were made as required, such as color palettes and browsing interfaces 
+    - e.g. horizontal scroll flex display of courses was changed to multi-item carousel after test user feedback
+6. As the website is near completion, the webpages are passed through W3C validators to ensure the code is clean.
+6. The edited final web application is then updated onto the host server
 
 ## Deployment
 
-The website is deployed on Heroku, using GitHub to host the project repository. The website can be found at this [link](http://foodiereview.herokuapp.com).
-
+The website is deployed on Heroku, using GitHub to host the project repository. The website can be found at this [link](http://programming-course-project.herokuapp.com).<br>
+The deployment process is as such:
+1. Code was written on gitpod using Code Institute's template. Heroku was installed in gitpod by:
+    pip3 install heroku
 - Database passwords and session keys are stored in the .env file which is included in the .gitignore.
   `steps taken to deploy`
 
