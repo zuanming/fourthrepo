@@ -11,6 +11,7 @@
 </div>
 <div class="container">
   <div class="container text-center">
+    <!-- Search form  -->
     <form method="GET">
       <div class="form-row">
         <div class="form-group col-md-8 mb-0">
@@ -27,6 +28,7 @@
       />
     </form>
     {% if search_result.count is not questions.count %}
+    <!-- Display search results if search form is processed -->
     <div class="mb-3">
       <i>
         Your search {% if searched_title is not None %} for
@@ -47,6 +49,7 @@
 
   <div class="container">
     {% for question in page_obj %}
+    <!-- Display all questions in pages -->
     <div class="card mb-3 mainpost">
       <div class="card-body">
         <h4 class="card-title mb-3">
@@ -68,6 +71,7 @@
           class="btn btn-primary card-link">
           Edit
         </a>
+        <!-- Delete button to call modal form -->
         <button
           type="button"
           class="btn btn-danger"
@@ -133,6 +137,7 @@
       {% endif %}
       
       {% if question.answer_set.all %}
+      <!-- If answers are available, show button to toggle hidden answers -->
       <button class="ansDiv btn btn-light" type="button" style="margin:15px;">Show Answers <span>&#9660;</span></button>
       {% endif %}
       {% for answer in question.answer_set.all %}
@@ -240,7 +245,7 @@
   $(".subpost").hide()
 </script>
 
-<!-- Toggle to show and side answers for each question -->
+<!-- Jquery to toggle to show and side answers for each question -->
 <script>
     $( ".ansDiv" ).each(function() {
         $(this).on("click", function(){
