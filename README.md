@@ -13,12 +13,12 @@ This website aims to achieve this objective by offering digital courses on softw
 1. To allow users to purchase digital courses taught by established tutors
 2. To build a community where users can help out each other and ask or answer questions in a forum.
 
-#### External user’s goal:
+### External user’s goal:
 * To gain knowledge in software development through purchased digital content from the website
 * To seek help in the forum if they face any difficulties in their learning or with any personal projects they may require assistance with
 * To help other users by providing solutions to other users who are facing difficulties
 
-#### Site owner’s goal:
+### Site owner’s goal:
 * To build a mobile responsive site to provide a means for users to learn and upgrade themselves with digital skills
 * To build a supportive community for developers from all over
 * To profit from the sales of digital content and expand the provision of products and services in the future
@@ -89,6 +89,7 @@ Answers for each question are also available.
 In summary, **non-authenticated users** are limited to viewing content, whereas **authenticated users** are able to make purchases, write reviews and post questions or answers. 
 **Administrators** have the privilege to add, edit and delete the courses and tutors information as the site owner/administrator.
 
+***
 
 ## UI
 The UI is designed with simplicity in mind. The site-wide color scheme used is a dark background with bright colored buttons as calls to action to mimic a code writing application such as Gitpod and Visual Studio Code.
@@ -118,9 +119,10 @@ Due to the limitations of time, features were added based on priority versus est
 - Forum to add checkbox for user to select which posted answer was the most relevant and useful. Upon indicating the best answer, the question will be marked and indicated as 'Answered'.
 - Posted reviews, questions and answers to indicate "edited on -datetime-" after an edit has been made
     - To also indicate a "Deleted by -user/administrator-" for deleted items instead of removing from database completely
-***
-## Technologies Used
 
+***
+
+## Technologies Used
 The following programming languages and tools were used to build the website:
 
 - HTML 5
@@ -142,6 +144,7 @@ The deployed web application uses SQL database to store its data.
 - SQL was selected instead of MongoDb which stores data in JSON format
     
 ***
+
 ## Testing
 
 The website has been tested for viewing and responsiveness on various screen sizes, including but not limited to the following web browsers and devices:
@@ -177,6 +180,8 @@ The website has been tested for viewing and responsiveness on various screen siz
 6. As the website is near completion, the webpages are passed through W3C validators to ensure the code is clean.
 6. The edited final web application is then updated onto the host server
 
+***
+
 ## Deployment
 
 The website is deployed on Heroku, using GitHub to host the project repository. The website can be found at this [link](http://programming-course-project.herokuapp.com).<br>
@@ -189,8 +194,9 @@ The deployment process is as such:
 6. Code was pushed onto Heroku again after changes were done, and final testing was conducted to check the UI/UX elements and processes.
 7. Final adjustments were made and pushed onto Heroku for submission.
 
-## Credits
+***
 
+## Credits
 This website was built using tools and data from various sources, including but not limited to the following:
 
 - [Heroku](https://www.heroku.com) for the hosting of the web application.
@@ -200,5 +206,4 @@ This website was built using tools and data from various sources, including but 
 - [jQuery script.net](https://www.jqueryscript.net/slider/responsive-bootstrap-carousel-multiple-items.html) for the multi-item responsive carousel sample
 - [favicon.io](https://favicon.io/favicon-converter) for the favicon generator 
 - [Wikimedia](https://commons.wikimedia.org/wiki/Main_Page) for the development platform logos
-
 - **Last but not least, to [Trent Global](https://www.trentglobal.edu.sg/diplomainsoftwaredevelopment/?gclid=EAIaIQobChMI8M3ezf6t6QIV2BwrCh2R6A44EAAYASAAEgL6__D_BwE) and [Code Institute](https://codeinstitute.net) for the teachings and support to have made this project possible.**
