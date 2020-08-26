@@ -32,7 +32,7 @@
         Your search {% if searched_title is not None %} for
         "{{searched_title}}" {% endif %} in "{{searched_course}}" returned
         {{search_result.count}} result(s).
-      </i>
+      </i><br><a href="{% url 'view_forum' %}" class="btn btn-light">Reset Search</a>
     </div>
     {% endif %}
   </div>
