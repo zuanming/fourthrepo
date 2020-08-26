@@ -1,5 +1,6 @@
 # FSDev
-
+https://res.cloudinary.com/dhktrng6p/image/upload/v1598206818/main-logo_fnpxiv.gif
+[Logo Image]("https://res.cloudinary.com/dhktrng6p/image/upload/v1598206818/main-logo_fnpxiv.gif" alt="logo")
 ### Full Stack Frameworks with Django Project (Code Institute)
 
 This project is built as a webpage for aspiring developers to purchases digital courses online to learn and also to build a community of developers.
@@ -27,7 +28,7 @@ This website aims to achieve this objective by offering digital courses on softw
 
 ## Objective-based design
 
-<img src="/static/images/readme/mockup.png" style="border-radius:50px;" alt="Devices Mockup">
+<img src="/static/images/readme/mockup.png" border-radius="50px" alt="Devices Mockup">
 
 ## UX
 The UX is designed to deliver the website objective as directly and quickly as possible by providing minimal steps for users to access the desired information required, with a clean and uncluttered web interface.
@@ -37,10 +38,10 @@ The website is divided into 4 sections - **Courses**, **Tutors**, **Forum** and 
 * Each page is made mobile responsive for devices with smaller screens.
 
 #### Wireframe:
-<img src="/static/images/readme/wireframe.png" style="width:600px;height:auto;" alt="Devices Mockup">
+<img src="/static/images/readme/wireframe.png" width="600px" height="auto" alt="Devices Mockup">
 
 ### Home Page
-<img src="/static/images/readme/home-page.png" style="width:600px;height:auto;" alt="Home Page">
+<img src="/static/images/readme/home-page.png" width="600px" height="auto" alt="Home Page">
 
 ### Courses
 This page displays the different courses grouped by the type of development, Frontend/Backend/Databases. 
@@ -53,9 +54,9 @@ They are also unable to write reviews or comment on reviews.<br>
 
 **Administrators** are able to access the edit and delete function for the courses on both courses and course details pages to edit the courses provided. They can also add courses from the courses page if they wish to provide more content for sale. They are however unable to add items to cart.
 
-<img src="/static/images/readme/cart.jpeg" style="width:auto;height:300px;" alt="course - wireframe">
-<img src="/static/images/readme/course-user.png" style="width:auto;height:300px;" alt="course - user view">
-<img src="/static/images/readme/course-admin.png" style="width:auto;height:300px;" alt="course - admin view">
+<img src="/static/images/readme/cart.jpeg" width="auto" height="300px" alt="course - wireframe">
+<img src="/static/images/readme/course-user.png" width="auto" height="300px" alt="course - user view">
+<img src="/static/images/readme/course-admin.png" width="auto" height="300px" alt="course - admin view">
 
 ### Tutors
 This page displays the different tutors and similarly to courses, users can access the details page for each tutor.<br>
@@ -67,24 +68,24 @@ This page displays the different tutors and similarly to courses, users can acce
 ### Cart
 This page is for users to view what courses they are intending to purchase and check out their items for payment. The "add to cart" button will automatically update its text and be disabled according to event i.e. "In cart" and "purchased" respectively.<br>
 
-<img src="/static/images/readme/navbar.jpeg" style="width:auto;height:250px;" alt="course - user view">
+<img src="/static/images/readme/navbar.jpeg"  width="auto" height="250px" alt="course - user view">
 
 **Non-Authenticated Users** & **Administrators** will not be able to access this page.<br>
-- Non-Authenticated User<br><img src="/static/images/readme/cart-nonauth.png" style="width:auto;height:48px;" alt="course - normal view"><br>
-- Admin User<br><img src="/static/images/readme/cart-admin.png" style="width:auto;height:45px;" alt="course - admin view"><br>
+- Non-Authenticated User<br><img src="/static/images/readme/cart-nonauth.png"  width="auto" height="48px"alt="course - normal view"><br>
+- Admin User<br><img src="/static/images/readme/cart-admin.png" width="auto" height="45px"alt="course - admin view"><br>
 
 **Authenticated Users** will be able to access this page.
-- Authenticated User<br><img src="/static/images/readme/cart-user.png" style="width:auto;height:50px;" alt="course - user view"><br>
+- Authenticated User<br><img src="/static/images/readme/cart-user.png" width="auto" height="50px" alt="course - user view"><br>
 
 ### Forum
 This page is for users to ask and answer questions, and a search function is provided for users to search for the question title or for questions in each course category. 
 Answers for each question are also available.
 
 **Administrators** and **Authenticated Users** will be able to create, edit and delete only the questions or answers that they have posted. They are only able to view the questions and answers posted by other users. 
-- Admin User & Authenticated User<br><img src="/static/images/readme/forum-auth.png" style="width:400px;height:auto;" alt="course - admin view"><br>
+- Admin User & Authenticated User<br><img src="/static/images/readme/forum-auth.png" width="400px" height="auto" alt="course - admin view"><br>
 
 **Non-Authenticated Users** will only be able to view and search for questions.
-- Non-Authenticated User<br><img src="/static/images/readme/forum-nonauth.png" style="width:400px;height:auto;" alt="course - nonauth view"><br>
+- Non-Authenticated User<br><img src="/static/images/readme/forum-nonauth.png" width="400px" height="auto" alt="course - nonauth view"><br>
 
 In summary, **non-authenticated users** are limited to viewing content, whereas **authenticated users** are able to make purchases, write reviews and post questions or answers. 
 **Administrators** have the privilege to add, edit and delete the courses and tutors information as the site owner/administrator.
@@ -144,7 +145,7 @@ The deployed web application uses SQL database to store its data.
 - SQL was selected instead of MongoDb which stores data in JSON format
 
 Entity Relationship Diagram:<br>
-<img src="/static/images/readme/erd.png" style="width:800px;height:auto;" alt="ERD">
+<img src="/static/images/readme/erd.png" width="800px" height="auto" alt="ERD">
     
 ***
 
