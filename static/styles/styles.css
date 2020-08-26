@@ -2,6 +2,7 @@ body {
     background-color:rgba(9, 9, 9, 0.9);
     color:lightgrey;
     margin-bottom:80px;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .scrolldiv {
@@ -85,6 +86,14 @@ body {
     border-radius:5px;
 }
 
+.text-muted {
+    color:rgba(209, 190, 122, 0.8) !important;
+}
+
+.blockquote-footer {
+    color:rgb(152, 216, 250, 0.6) !important
+}
+
 .active > a {
     color:white !important;
 }
@@ -108,7 +117,8 @@ footer {
 }
 
  .featurette-divider {
-  margin: 80px 0;
+    margin: 80px;
+    border-color:rgb(235,236,236);  
 }
 
  .featurette {
@@ -120,10 +130,6 @@ footer {
   font-weight: 300;
   line-height: 1;
   letter-spacing: -1px;
-}
-
-.featurette-divider {
-    border-color:rgb(235,236,236);
 }
 
 .modal-content {
