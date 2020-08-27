@@ -101,7 +101,7 @@ In summary, **non-authenticated users** are limited to viewing content, whereas 
 
 ## UI
 The UI is designed with simplicity in mind. The site-wide color scheme used is a dark background with bright colored buttons as calls to action to mimic a code writing application such as Gitpod and Visual Studio Code.
-The font selected for this site is 'Roboto Mono' google font as it represents the monospace font used in development platforms.
+The font selected for this site is 'Roboto' google font for clear and simple viewing.
 This was done to relate to software developing platform and give a feeling of familiarity to developers.
 
 ### Features
