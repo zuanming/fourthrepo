@@ -73,21 +73,26 @@ This page is for users to view what courses they are intending to purchase and c
 <img src="/static/images/readme/navbar.jpeg"  width="auto" height="250px" alt="course - user view">
 
 **Non-Authenticated Users** & **Administrators** will not be able to access this page.<br>
-- Non-Authenticated User<br><img src="/static/images/readme/cart-nonauth.png"  width="auto" height="48px"alt="course - normal view"><br>
-- Admin User<br><img src="/static/images/readme/cart-admin.png" width="auto" height="45px"alt="course - admin view"><br>
+- Non-Authenticated User<br>
+<img src="/static/images/readme/cart-nonauth.png"  width="auto" height="48px" alt="course - normal view"><br>
+- Admin User<br>
+<img src="/static/images/readme/cart-admin.png" width="auto" height="45px" alt="course - admin view"><br>
 
 **Authenticated Users** will be able to access this page.
-- Authenticated User<br><img src="/static/images/readme/cart-user.png" width="auto" height="50px" alt="course - user view"><br>
+- Authenticated User<br>
+<img src="/static/images/readme/cart-user.png" width="auto" height="50px" alt="course - user view"><br>
 
 ### Forum
 This page is for users to ask and answer questions, and a search function is provided for users to search for the question title or for questions in each course category. 
 Answers for each question are also available.
 
 **Administrators** and **Authenticated Users** will be able to create, edit and delete only the questions or answers that they have posted. They are only able to view the questions and answers posted by other users. 
-- Admin User & Authenticated User<br><img src="/static/images/readme/forum-auth.png" width="400px" height="auto" alt="course - admin view"><br>
+- Admin User & Authenticated User<br>
+<img src="/static/images/readme/forum-auth.png" width="400px" height="auto" alt="course - admin view"><br>
 
 **Non-Authenticated Users** will only be able to view and search for questions.
-- Non-Authenticated User<br><img src="/static/images/readme/forum-nonauth.png" width="400px" height="auto" alt="course - nonauth view"><br>
+- Non-Authenticated User<br>
+<img src="/static/images/readme/forum-nonauth.png" width="400px" height="auto" alt="course - nonauth view"><br>
 
 In summary, **non-authenticated users** are limited to viewing content, whereas **authenticated users** are able to make purchases, write reviews and post questions or answers. 
 **Administrators** have the privilege to add, edit and delete the courses and tutors information as the site owner/administrator.
@@ -208,14 +213,12 @@ For submission purposes to Code Institute:
     - Username = testuser1
     - Password = commonpassword123
 
-
 ***
 
 ## Credits
 This website was built using tools and data from various sources, including but not limited to the following:
 
 - [Heroku](https://www.heroku.com) for the hosting of the web application.
-
 - [Unsplash](https://unsplash.com/) for the images on the cover page.
 - [Canva](https://material.io/design/color/dark-theme.html#ui-application) for the logo design
 - [jQuery script.net](https://www.jqueryscript.net/slider/responsive-bootstrap-carousel-multiple-items.html) for the multi-item responsive carousel sample
