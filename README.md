@@ -178,13 +178,13 @@ The website has been tested for viewing and responsiveness on various screen siz
 1. Testing was first done by applying CRUD to Courses and Tutors entities using the Django Admin and SQLite database during the construction of the project. This was to ensure the django models were created properly according to the ERD.
 2. Upon successful deployment onto Heroku, the database was replaced with PostgreSQL.
 3. CRUD for the courses entity was once again tested on the deployed web interface and new database using the administrator account and checked if they Wireframe displayed correctly. Tutors entities were subsequently added and related to courses. 
-2. The deployed webpage is then provided to random testers to test out the user authentication interfaces and functions (sign up and login).
-3. Following this, the testers are directed to try making purchases to test the checkout process.
-4. This process is tried on different web browsers and devices to ensure the process is consistent.
-5. UI/UX feedback was taken into consideration and changes were made as required, such as color palettes and browsing interfaces 
+4. The deployed webpage is then provided to random testers to test out the user authentication interfaces and functions (sign up and login).
+5. Following this, the testers are directed to try making purchases to test the checkout process.
+6. This process is tried on different web browsers and devices to ensure the process is consistent.
+7. UI/UX feedback was taken into consideration and changes were made as required, such as color palettes and browsing interfaces 
     - e.g. horizontal scroll flex display of courses was changed to multi-item carousel after test user feedback
-6. As the website is near completion, the webpages are passed through W3C validators to ensure the code is clean.
-6. The edited final web application is then updated onto the host server
+8. As the website is near completion, the webpages are passed through W3C validators to ensure the code is clean.
+9. The edited final web application is then updated onto the host server
 
 ***
 
@@ -199,6 +199,15 @@ The deployment process is as such:
 5. Deployed website was provided to testers for testing purposes, afterwhich adjustments were made.
 6. Code was pushed onto Heroku again after changes were done, and final testing was conducted to check the UI/UX elements and processes.
 7. Final adjustments were made and pushed onto Heroku for submission.
+
+For submission purposes to Code Institute:
+1. Administrator account
+    - Username = staffuser1
+    - Password = commonpassword123
+2. Authenticated User account
+    - Username = testuser1
+    - Password = commonpassword123
+
 
 ***
 
