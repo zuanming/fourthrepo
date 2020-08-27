@@ -1,6 +1,6 @@
 # FSDev
-https://res.cloudinary.com/dhktrng6p/image/upload/v1598206818/main-logo_fnpxiv.gif
-[Logo Image]("https://res.cloudinary.com/dhktrng6p/image/upload/v1598206818/main-logo_fnpxiv.gif" alt="logo")
+<img src="https://res.cloudinary.com/dhktrng6p/image/upload/v1598206818/main-logo_fnpxiv.gif" alt="logo" width="300px">
+
 ### Full Stack Frameworks with Django Project (Code Institute)
 
 This project is built as a webpage for aspiring developers to purchases digital courses online to learn and also to build a community of developers.
@@ -28,7 +28,7 @@ This website aims to achieve this objective by offering digital courses on softw
 
 ## Objective-based design
 
-<img src="/static/images/readme/mockup.png" border-radius="50px" alt="Devices Mockup">
+<img src="/static/images/readme/mockup.png" alt="Devices Mockup">
 
 ## UX
 The UX is designed to deliver the website objective as directly and quickly as possible by providing minimal steps for users to access the desired information required, with a clean and uncluttered web interface.
