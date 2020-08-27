@@ -1,8 +1,8 @@
 body {
-    background-color:rgba(9, 9, 9, 0.9);
+    background-color:rgba(30, 30, 30);
     color:lightgrey;
     margin-bottom:80px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Roboto', sans-serif;
 }
 
 .scrolldiv {
@@ -64,12 +64,12 @@ body {
 }
 
 .mainpost{
-    background-color: rgb(45,45,45) !important;
+    background-color: rgb(38,44,52) !important;
 }
 
 .subpost {
     color:rgb(245,246,246);
-    background-color:rgb(66,61,70);
+    background-color:rgb(60,64,66);
     border-radius:10px !important;
 }
 

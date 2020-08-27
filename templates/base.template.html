@@ -16,8 +16,7 @@
 	<link rel="icon" type="image/png" href="{% static 'static/images/favicon.png' %}">
 
     <!-- Google Font -->
-	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
 	<title>FSDev{%block title%}{%endblock%}</title>
 </head>
@@ -72,8 +71,9 @@
 		</nav>
 	</header>
 	<main style="margin-top:56px;">
+    <!-- Flash Messages -->
 		{% if messages %}
-		<div class='alert alert-success'>
+		<div id="flash-msg" class='alert alert-success mb-0'>
 			<div>
 				{% for m in messages %} {{ m }} {% endfor %}
 			</div>
@@ -110,6 +110,13 @@
         submitButton.css('display', 'none');
     });
 	</script>
+
+    <!-- Messages Timeout -->
+    <script>
+      setTimeout(function () {
+        $("#flash-msg").fadeOut();
+      }, 2000);
+    </script>
 </body>
 
 </html>
